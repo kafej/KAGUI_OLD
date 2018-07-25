@@ -9,6 +9,9 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
     [System.Reflection.Assembly]::LoadFrom($Assembly.fullName) | out-null
 }
 
+$theme = "BaseLight"
+# $theme = "BaseDark"
+
 [xml]$xaml = @"
 <Controls:MetroWindow
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -32,7 +35,7 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Cyan.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/$theme.xaml" />
                 </ResourceDictionary.MergedDictionaries>
 
                 <Canvas x:Key="appbar_3d_3ds" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
@@ -5185,7 +5188,7 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
                         <Button x:Name="BrowseT" Width="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Height="40" Margin="0,-20,4,0" Style="{DynamicResource MetroCircleButtonStyle}" >
                             <Rectangle Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White">
                                 <Rectangle.OpacityMask>
-                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_marketplace}"/>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_puzzle}"/>
                                 </Rectangle.OpacityMask>
                             </Rectangle>
                         </Button>
@@ -5304,7 +5307,18 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
                 <TabItem Header="RTG" Margin="0,0,0,0">
                     <Grid>
                         <StackPanel>
-
+                            <GroupBox Header="Robot1" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="150">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG1" Margin="-4,-4,-4,0" Width="150" />
+                            </GroupBox>
+                            <GroupBox Header="Robot2" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="140,-150,0,0" Width="120" Height="150">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG2" Margin="-4,-4,-4,0" Width="150" />
+                            </GroupBox>
+                            <GroupBox Header="Robot3" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="270,-150,0,0" Width="120" Height="150">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG3" Margin="-4,-4,-4,0" Width="150" />
+                            </GroupBox>
+                            <GroupBox Header="Robot4" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="400,-150,0,0" Width="120" Height="150">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG4" Margin="-4,-4,-4,0" Width="150" />
+                            </GroupBox>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -5318,7 +5332,6 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="400" HorizontalAlignment="Left" Margin="10,0,0,0">
-
                                 <GroupBox Header="AD" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="0,0,0,0" Width="120" Height="150">
                                     <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="rap1" Margin="-4,-4,-4,0" Width="150" />
                                 </GroupBox>
@@ -5329,7 +5342,26 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
                                     </Rectangle.OpacityMask>
                                 </Rectangle>
 
+                                <GroupBox Header="eskulap" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="150">
+                                    <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="esk" Margin="-4,-4,-4,0" Width="150" />
+                                </GroupBox>
+
+                                <Rectangle Width="18" Height="18" Fill="White" Margin="-40,-125,0,0" >
+                                    <Rectangle.OpacityMask>
+                                        <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_database_sql}"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
                             </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,70,0,0">
+                                <DatePicker HorizontalAlignment="Left" x:Name="datz1" Margin="0,20,0,0" VerticalAlignment="Top" Width="116"/>
+                                <Label Content="Zakres: (2018-06-21)" HorizontalAlignment="Left" Margin="-120,0,0,0" VerticalAlignment="Top" Width="120"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,4,0,0">
+                                <DatePicker HorizontalAlignment="Left" x:Name="datz2" Margin="0,0,0,0" VerticalAlignment="Top" Width="116"/>
+                            </StackPanel>
+
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -5350,10 +5382,10 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
 
         <Grid>
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="370,287,0,0">
+                <StackPanel Orientation="Horizontal" Margin="380,287,0,0">
                     <Rectangle Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White">
                         <Rectangle.OpacityMask>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_console}"/>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_information_circle}"/>
                         </Rectangle.OpacityMask>
                     </Rectangle>
                 </StackPanel>
@@ -5370,7 +5402,7 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
             </StackPanel>
 
             <StatusBarItem HorizontalAlignment="Right" Margin="0,0,10,0">
-                <Label Content="Ver. B.4.2.1"/>
+                <Label Content="Ver. B.4.8.6"/>
             </StatusBarItem>
         </StatusBar>
 
@@ -5398,16 +5430,20 @@ $xaml.SelectNodes("//*[@*[contains(translate(name(.),'n','N'),'Name')]]")  | For
 $Image1.Source = "$PSScriptRoot\Themes\logo.png"
 $kaf2.Source = "$PSScriptRoot\Themes\kaf2.png"
 $kaf2.Visibility = "Hidden"
-$pb.Visibility = "Hidden"
+$pb.Visibility = "Visible"
 
 $ChangeSettings  = $Form.Findname("ChangeSettings")
 $FlyOutContent = $Form.Findname("FlyOutContent")
+
+$datz2.Text = Get-Date -UFormat "%Y-%m-%d"
 
 $Dom2.Items.Add("MAC Terminala")
 $Dom2.Items.Add("Połącz - VNC")
 $Dom2.Items.Add("Połącz - RDP")
 $Dom2.Items.Add("Ping - CMD")
 $Dom2.Items.Add("Ping")
+
+$esk.Items.Add("Plan Operacyjny")
 
 $Rap1.Items.Add("Użytkownicy")
 $Rap1.Items.Add("PC")
@@ -5426,6 +5462,38 @@ $Pac1.Items.Add("Info")
 $Pac1.Items.Add("Status")
 $Pac1.Items.Add("ID Operacji")
 $Pac1.Items.Add("RTG - Skierowanie")
+$Pac1.Items.Add("Konsultacja")
+
+Function wai {
+    $SyncHash = [hashtable]::Synchronized(@{Window = $Form; TextBox2 = $TextBox2; pb = $pb; TextBox1 = $TextBox1; dialgResult = $dialgResult})
+    $Runspace = [runspacefactory]::CreateRunspace()
+    $Runspace.ThreadOptions = "ReuseThread"         
+    $Runspace.Open()
+    $Runspace.SessionStateProxy.SetVariable("SyncHash", $SyncHash)          
+    $Worker = [PowerShell]::Create().AddScript({
+            Start-Sleep 5
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.pb.Visibility = "Hidden"})
+    })
+    $Worker.Runspace = $Runspace
+    $Worker.BeginInvoke()
+}
+
+Function waif {
+    $SyncHash = [hashtable]::Synchronized(@{Window = $Form; TextBox2 = $TextBox2; pb = $pb; TextBox1 = $TextBox1; dialgResult = $dialgResult})
+    $Runspace = [runspacefactory]::CreateRunspace()
+    $Runspace.ThreadOptions = "ReuseThread"         
+    $Runspace.Open()
+    $Runspace.SessionStateProxy.SetVariable("SyncHash", $SyncHash)          
+    $Worker = [PowerShell]::Create().AddScript({
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.pb.Visibility = "Visible"})
+            Start-Sleep 2
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.pb.Visibility = "Hidden"})
+    })
+    $Worker.Runspace = $Runspace
+    $Worker.BeginInvoke()
+}
+
+wai
 
 function PolePuste {
     # OK CANCEL Style
@@ -5582,7 +5650,7 @@ if (($userr -eq $p1) -or ($userr -eq $p2) -or ($userr -eq $p3) -or ($userr -eq $
     $group = "informatycy"
     $members = Get-ADGroupMember -Identity $group -Recursive | Select-Object -ExpandProperty SamAccountName
 }
-
+$zuo1 = "zuo"
 If (($members -contains $userr) -or ($zuo1 -eq "zuo")) {
     $l = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("="))
     $p = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("=="))
@@ -5614,7 +5682,7 @@ If (($members -contains $userr) -or ($zuo1 -eq "zuo")) {
 
 #Wiadomość
 $Buttonw.add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $settings = [MahApps.Metro.Controls.Dialogs.MetroDialogSettings]::new()
 
     # show ok/cancel message
@@ -5623,7 +5691,7 @@ $Buttonw.add_Click({
 })
 
 $Buttonwf.add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $name = $dialgDomaink.Text
     $msg = $dialgDomainw.Text
     Invoke-WmiMethod -Path Win32_Process -Name Create -ArgumentList "msg * $msg" -ComputerName $name
@@ -5663,15 +5731,66 @@ $ListBox.Add_IsMouseCapturedChanged({
     # $ListBox.SelectedIndex = -1
 })
 
+Function Button26 {
+    $SyncHash = [hashtable]::Synchronized(@{Window = $Form; TextBox2 = $TextBox2; pb = $pb; TextBox1 = $TextBox1; dialgResult = $dialgResult})
+    $Runspace = [runspacefactory]::CreateRunspace()
+    $Runspace.ThreadOptions = "ReuseThread"         
+    $Runspace.Open()
+    $Runspace.SessionStateProxy.SetVariable("SyncHash", $SyncHash)          
+    $Worker = [PowerShell]::Create().AddScript({
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.pb.Visibility = "Visible"})
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("Informacje o Użytkowniku`r`n")})
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("`r`n")})
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")})
+        
+            $nazwal = $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox1.Text})
+        
+            if ($nazwal) {
+                ## by SID
+                $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+                
+                $query = "SELECT * FROM STATS`$USER_LOG WHERE USER_ID = '$nazwal'"
+                
+                $connection.open()
+                
+                $command=$connection.CreateCommand()
+                $command.CommandText=$query
+                $wynik = $command.ExecuteReader()
+                
+                $table = new-object System.Data.DataTable
+                $table.Load($wynik)
+                
+                $connection.close()
+                    
+                $spr = $table 
+                $sprfin = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+        
+                $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("`r`n")})
+                $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("$sprfin`r`n")})
+                $pb.Visibility = "Hidden"
+            } else {
+                $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("Informacje o Użytkowniku`r`n")})
+                $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("`r`n")})
+                $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.TextBox2.AppendText("Pole puste`r`n")})
+                PolePuste
+                $pb.Visibility = "Hidden"
+            }
+            $SyncHash.Window.Dispatcher.Invoke([action]{$SyncHash.pb.Visibility = "Hidden"})
+    })
+    $Worker.Runspace = $Runspace
+    $Worker.BeginInvoke()
+}
+
 # Pacjent - Log
 $Button26.Add_Click({
-    $pb.Visibility = "Visible"
+    $TextBox2.AppendText("Informacje o Użytkowniku`r`n") | Out-Default 
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n") | Out-Null
+    waif
+
     $nazwal = $TextBox1.Text
 
     if ($nazwal) {
-        $TextBox2.AppendText("Informacje o Użytkowniku`r`n")
-        $TextBox2.AppendText("`r`n")
-        $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
         ## by SID
         $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
         
@@ -5706,7 +5825,7 @@ $Button26.Add_Click({
 
 #Otwórz Tools
 $BrowseT.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     Invoke-Item -Path '\\fs01\IT\skrypty\Esku\Tools\'
     $pb.Visibility = "Hidden"
     toend
@@ -5720,7 +5839,7 @@ $Cer1.Add_IsMouseCapturedChanged({
     $a = $Cer1.SelectedItem
     if ($a -eq "Dodaj") {
         # Certyfikat
-        $pb.Visibility = "Visible"
+        waif
         Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
         $first = $TextBox1.Text
         if ($first) {
@@ -5866,7 +5985,7 @@ $Cer1.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Usuń") {
         # Cer-Usuń
-        $pb.Visibility = "Visible"
+        waif
         Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
         $first = $TextBox1.Text
         if ($first) {
@@ -5994,7 +6113,7 @@ $Cer1.Add_IsMouseCapturedChanged({
 $il = 140
 $TextBox4.Text = $il
 $Button7.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $il = $TextBox4.Text
     $TextBox4.Text = $il
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
@@ -6082,7 +6201,7 @@ Remove-Item C:\bg\czy.ps1 -Force
  })
 # Hasło
 $Button1.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
     $first = $TextBox1.Text
     if ($first) {
@@ -6146,13 +6265,14 @@ $Button2.Add_Click({
 # Pacjent - Info
 # ID Operacji
 # Ponowne Skierowanie
+# Konsultacja
 $Pac1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $a = $Pac1.SelectedItem
     if ($a -eq "Status") {
         # Status Pacjenta po nazwisku
-        $pb.Visibility = "Visible"
+        waif
         $TextBox2.AppendText("Piszemy Polskie znaki. Wielkość liter nie ma znaczenia.`r`n")
     
         $uesku = $TextBox1.Text
@@ -6225,7 +6345,7 @@ Remove-Item C:\bg\czy.ps1 -Force
         toend
     } elseif ($a -eq "Info") {
         # Pacjent - Info
-        $pb.Visibility = "Visible"
+        waif
         $nazwai = $TextBox1.Text
     
         if ($nazwai) {
@@ -6265,7 +6385,7 @@ Remove-Item C:\bg\czy.ps1 -Force
         toend
     } elseif ($a -eq "ID Operacji") {
         # ID Operacji
-        $pb.Visibility = "Visible"
+        waif
         $nazwai = $TextBox1.Text
     
         if ($nazwai) {
@@ -6329,7 +6449,7 @@ Remove-Item C:\bg\czy.ps1 -Force
         toend
     } elseif ($a -eq "RTG - Skierowanie") {
         #Ponowne Skierowanie
-        $pb.Visibility = "Visible"
+        waif
         $nazwau = $TextBox1.Text
     
         if ($nazwau) {
@@ -6395,8 +6515,186 @@ Remove-Item C:\bg\czy.ps1 -Force
             $TextBox2.AppendText("Możesz zawęzić dodając do nazwiska imię. Np. Barański Michał`r`n")
             $pb.Visibility = "Hidden"
         }
+    } elseif ($a -eq "Konsultacja") {
+        waif
+        $TextBox2.AppendText("Piszemy Polskie znaki. Wielkość liter nie ma znaczenia.`r`n")
+    
+        $uesku = $TextBox1.Text
+        $ueskuf = $uesku.substring(0,1).toupper()+$uesku.substring(1).tolower()
+    
+        if ($uesku) {
+            $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+            
+            ## by SID
+            $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+    
+            $query = "Select * FROM RI_PACJENCI where P_NAZWISKO LIKE '$ueskuf%'"
+    
+            $connection.open()
+    
+            $command=$connection.CreateCommand()
+            $command.CommandText=$query
+            $wynik = $command.ExecuteReader()
+    
+            $table = new-object System.Data.DataTable
+            $table.Load($wynik)
+    
+            $connection.close()
+    
+            if ($table) {
+                $spr = $table | Select-Object P_PACJENT_ID, P_IMIE, P_NAZWISKO, P_NR_PESEL
+    
+                $spr3 = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | Select-Object P_PACJENT_ID, P_IMIE, P_NAZWISKO
+                $spri = $spr3 | Select-Object -ExpandProperty P_IMIE
+                $sprn = $spr3 | Select-Object -ExpandProperty P_NAZWISKO
+                $sprs = $spr3 | Select-Object -ExpandProperty P_PACJENT_ID
+    
+                $TextBox2.AppendText("`r`n")
+                if ($spr3) {
+                    $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+    
+                    $query = "Select * FROM OD_KONSULTACJE where KON_P_PACJENT_ID='$sprs'"
+            
+                    $connection.open()
+            
+                    $command=$connection.CreateCommand()
+                    $command.CommandText=$query
+                    $wynikk = $command.ExecuteReader()
+            
+                    $tablek = new-object System.Data.DataTable
+                    $tablek.Load($wynikk)
+            
+                    $connection.close()
+
+                    if ($tablek) {
+                        $sprk = $tablek | Select-Object KON_KONSULTACJA_ID, KON_DATA, KON_TEKST, KON_TYTUL
+                        $spr3k = $sprk | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | Select-Object -ExpandProperty 'KON_KONSULTACJA_ID'
+                    
+                        $sprWynik = $spr3k
+                    
+                        $TextBox2.AppendText("Otworzy się Grid z ostatnimi konsultacjami bez parametru B`r`n")
+                        $TextBox2.AppendText("OSTATNIE NA DOLE !!! Można sortować`r`n")
+                    
+                        if ($sprWynik) {
+                    
+                            $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+                            ## To connect by SID
+                            $query2 = "update OD_KONSULTACJE set KON_STATUS = 'B', KON_UPD_USER = '', KON_UPD_DATE = '' where KON_KONSULTACJA_ID = $sprWynik"
+                            $connection.open()
+                    
+                            $command2=$connection.CreateCommand()
+                            $command2.CommandText=$query2
+                            $command2.ExecuteReader()
+                    
+                            $connection.close()
+                    
+                            $TextBox2.AppendText("`r`n")
+                            $TextBox2.AppendText("Konsultacja o ID $sprWynik została odblokowana`r`n")
+                            $TextBox2.AppendText("`r`n")
+                    
+                            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Konsultacja o ID $sprWynik została odblokowana",$okOnly)
+                            $dialgResult.Text = $result
+                            If ($result -eq "Affirmative"){ 
+                                $dialgResult.Foreground = "Green"
+                            }
+                            else{
+                                $dialgResult.Foreground = "Red"
+                            }
+                    
+                            $pb.Visibility = "Hidden"
+                        }
+                    }
+
+                }
+                $pb.Visibility = "Hidden"
+            }
+        } else {
+            $TextBox2.AppendText("Pole puste`r`n")
+            PolePuste
+            $pb.Visibility = "Hidden"
+        }
+        toend
     }
     $Pac1.SelectedIndex = -1
+    toend
+})
+
+#Plan Operacyjny
+$esk.Add_IsMouseCapturedChanged({
+    waif
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $p = $esk.SelectedItem
+    if ($p -eq "Plan Operacyjny") {
+        Clear-Variable -Name connection, query, command, reader, table, spr, d1
+        ## by SID
+
+        $d2 = $datz2.ToString()
+        $d1 = $d2.split(' ')[0]
+
+        $d4 = $datz1.ToString()
+
+        if ($d4) {
+            $d3 = $d4.split(' ')[0]
+        } else {
+            $d3 = $d1
+        }
+
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+        $query = "SELECT DISTINCT OA_LC_LECZENIE_ID,LC_NR_OPERACJI,(select SZ_JEDNOSTKI_ORGANIZACYJNE.JO_NAZWA from SZ_JEDNOSTKI_ORGANIZACYJNE where JO_JEDNOSTKA_ID=LC_JO_PLAN_POBYT_ID),LC_OPIS_PRZEDOPERACYJNY,LC_RODZAJ_OPERACJI,JO_SYMBOL, (select RI_PACJENCI.P_IMIE||' ' ||RI_PACJENCI.P_NAZWISKO from RI_PACJENCI where P_PACJENT_ID=LC_P_PACJENT_ID), (select RI_CHOROBY.CH_NAZWA_POL FROM RI_CHOROBY WHERE CH_CHOROBA_ID = LC_RZ_WSTEPNE_CH_CHOROBA_ID), (select prac_tytul||' ' ||ri_pracownicy.prac_nazwisko||' ' ||ri_pracownicy.prac_imie from od_mm_asysta, ri_pracownicy where od_mm_asysta.oa_lc_leczenie_id=lc_leczenie_id and od_mm_asysta.oa_type='O' and rownum=1 and ri_pracownicy.prac_pracownik_id=od_mm_asysta.oa_prac_pracownik_id), (select prac_tytul||' ' ||ri_pracownicy.prac_nazwisko||' ' ||ri_pracownicy.prac_imie from od_mm_asysta, ri_pracownicy where od_mm_asysta.oa_lc_leczenie_id=lc_leczenie_id and od_mm_asysta.oa_type='A' and rownum=1 and ri_pracownicy.prac_pracownik_id=od_mm_asysta.oa_prac_pracownik_id) FROM OD_LECZ_CHIR_PACJENTA, SZ_JEDNOSTKI_ORGANIZACYJNE, OD_MM_ASYSTA WHERE LC_DATA_PLANOWANA BETWEEN TO_DATE('$d3', 'YYYY-MM-DD') AND TO_DATE('$d1 23:59:59', 'YYYY-MM-DD HH24:MI:SS') AND JO_JEDNOSTKA_ID=LC_JO_PLAN_ID AND OA_LC_LECZENIE_ID=LC_LECZENIE_ID"
+
+        $connection.open()
+
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $reader=$command.ExecuteReader()
+
+        $table = new-object System.Data.DataTable
+        $table.Load($reader)
+
+        $connection.close()
+
+        if ($GRID4.IsChecked -eq $true) {
+            $spr = $table | Select-Object @{l="Sala";e="JO_SYMBOL"},@{l="Dział";e="(SELECTSZ_JEDNOSTKI_ORGANIZACYJNE.JO_NAZWAFROMSZ_JEDNOSTKI_ORGANIZACYJNEWHEREJO_JEDNOSTKA_ID=LC_JO_PLAN_POBYT_ID)"},@{l="Pacjent";e="(SELECTRI_PACJENCI.P_IMIE||''||RI_PACJENCI.P_NAZWISKOFROMRI_PACJENCIWHEREP_PACJENT_ID=LC_P_PACJENT_ID)"},@{l="Rozpoznanie";e="(SELECTRI_CHOROBY.CH_NAZWA_POLFROMRI_CHOROBYWHERECH_CHOROBA_ID=LC_RZ_WSTEPNE_CH_CHOROBA_ID)"},@{l="Operator";e="(SELECTPRAC_TYTUL||''||RI_PRACOWNICY.PRAC_NAZWISKO||''||RI_PRACOWNICY.PRAC_IMIEFROMOD_MM_ASYSTA,RI_PRACOWNICYWHEREOD_MM_ASYSTA.OA_LC_LECZENIE_ID=LC_LECZENIE_IDANDOD_MM_ASYSTA.OA_TYPE='O'ANDROWNUM=1ANDRI_PRACOWNICY.PRAC_PRACOWNIK_ID=OD_MM_ASYSTA.OA_PRAC_PR"},@{l="Asysta";e="(SELECTPRAC_TYTUL||''||RI_PRACOWNICY.PRAC_NAZWISKO||''||RI_PRACOWNICY.PRAC_IMIEFROMOD_MM_ASYSTA,RI_PRACOWNICYWHEREOD_MM_ASYSTA.OA_LC_LECZENIE_ID=LC_LECZENIE_IDANDOD_MM_ASYSTA.OA_TYPE='A'ANDROWNUM=1ANDRI_PRACOWNICY.PRAC_PRACOWNIK_ID=OD_MM_ASYSTA.OA_PRAC_PR"}, @{l="Opis Przedoperacyjny";e="LC_OPIS_PRZEDOPERACYJNY"},@{l="Rodzaj Operacji";e="LC_RODZAJ_OPERACJI"} | Out-GridView -Title "Przygotował Michał Zbyl"
+        } elseif ($HTML4.IsChecked -eq $true) {
+            $spr = $table | Select-Object @{l="Sala";e="JO_SYMBOL"},@{l="Dział";e="(SELECTSZ_JEDNOSTKI_ORGANIZACYJNE.JO_NAZWAFROMSZ_JEDNOSTKI_ORGANIZACYJNEWHEREJO_JEDNOSTKA_ID=LC_JO_PLAN_POBYT_ID)"},@{l="Pacjent";e="(SELECTRI_PACJENCI.P_IMIE||''||RI_PACJENCI.P_NAZWISKOFROMRI_PACJENCIWHEREP_PACJENT_ID=LC_P_PACJENT_ID)"},@{l="Rozpoznanie";e="(SELECTRI_CHOROBY.CH_NAZWA_POLFROMRI_CHOROBYWHERECH_CHOROBA_ID=LC_RZ_WSTEPNE_CH_CHOROBA_ID)"},@{l="Operator";e="(SELECTPRAC_TYTUL||''||RI_PRACOWNICY.PRAC_NAZWISKO||''||RI_PRACOWNICY.PRAC_IMIEFROMOD_MM_ASYSTA,RI_PRACOWNICYWHEREOD_MM_ASYSTA.OA_LC_LECZENIE_ID=LC_LECZENIE_IDANDOD_MM_ASYSTA.OA_TYPE='O'ANDROWNUM=1ANDRI_PRACOWNICY.PRAC_PRACOWNIK_ID=OD_MM_ASYSTA.OA_PRAC_PR"},@{l="Asysta";e="(SELECTPRAC_TYTUL||''||RI_PRACOWNICY.PRAC_NAZWISKO||''||RI_PRACOWNICY.PRAC_IMIEFROMOD_MM_ASYSTA,RI_PRACOWNICYWHEREOD_MM_ASYSTA.OA_LC_LECZENIE_ID=LC_LECZENIE_IDANDOD_MM_ASYSTA.OA_TYPE='A'ANDROWNUM=1ANDRI_PRACOWNICY.PRAC_PRACOWNIK_ID=OD_MM_ASYSTA.OA_PRAC_PR"}, @{l="Opis Przedoperacyjny";e="LC_OPIS_PRZEDOPERACYJNY"},@{l="Rodzaj Operacji";e="LC_RODZAJ_OPERACJI"}
+            # LC_OPIS_PRZEDOPERACYJNY,LC_RODZAJ_OPERACJI,JO_SYMBOL,P_IMIE,P_NAZWISKO
+
+            $Pre = "Przygotował: Michał Zbyl"
+
+$Header = @"
+<meta charset="utf-8">
+<style>
+TABLE {border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}
+TH {border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color: #6495ED;}
+TD {border-width: 1px;padding: 3px;border-style: solid;border-color: black;}
+P {font-size:24px; font-weight:bold;}
+.odd  { background-color:#ffffff; }
+.even { background-color:#dddddd; }
+</style>
+<title>
+Plan Operacji - Przygotował Michał Zbyl
+</title>
+"@
+
+            $spr | ConvertTo-Html -Head $Header | Out-File C:\bg\User.html | Wait-Process
+            Invoke-Item C:\bg\User.html
+            Start-Sleep 5
+
+$File = @"
+Start-Sleep -s 2
+Remove-Item C:\bg\User.html -Force
+Remove-Item C:\bg\czy.ps1 -Force
+"@
+            $File | Out-File -FilePath C:\bg\User.ps1 -Encoding ASCII | Wait-Process
+            Invoke-Item (Start-Process powershell "C:\bg\czy.ps1")
+            Remove-Item C:\bg\User.html -Force
+        }
+        $TextBox2.AppendText("`r`n")
+        $TextBox2.AppendText("Otworzy się strona z raportem`r`n")
+    }
+    $esk.SelectedIndex = -1
     toend
 })
 
@@ -6411,7 +6709,7 @@ $Dom2.Add_IsMouseCapturedChanged({
     $a = $Dom2.SelectedItem
     if ($a -eq "MAC Terminala") {
         # MAC/IP
-        $pb.Visibility = "Visible"
+        waif
         $adreip = $TextBox3.Text
         if ($adreip) {
             if (Get-Module -ListAvailable -Name Posh-SSH) {
@@ -6480,7 +6778,7 @@ $Dom2.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Połącz - VNC") {
         # Połącz - VNC
-        $pb.Visibility = "Visible"
+        waif
         #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
         $ippolacz = $TextBox3.Text
         $ipf = $TextBox3.Text
@@ -6523,6 +6821,8 @@ $Dom2.Add_IsMouseCapturedChanged({
             if ($ippolacz2 -like 'NEG*') {
                 $ippolacz = $ippolacz
             } elseif ($ippolacz2 -like 'K*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '10.*') {
                 $ippolacz = $ippolacz
             } elseif ($ippolacz -notlike '192.168*') {
                 $ippolacz = '192.168.'+$ippolacz
@@ -6551,7 +6851,7 @@ $Dom2.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Połącz - RDP") {
         # Połącz - RDP
-        $pb.Visibility = "Visible"
+        waif
         #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
         $ippolacz = $TextBox3.Text
         $ipf = $TextBox3.Text
@@ -6594,6 +6894,8 @@ $Dom2.Add_IsMouseCapturedChanged({
             if ($ippolacz2 -like 'NEG*') {
                 $ippolacz = $ippolacz
             } elseif ($ippolacz2 -like 'K*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '10.*') {
                 $ippolacz = $ippolacz
             } elseif ($ippolacz -notlike '192.168*') {
                 $ippolacz = '192.168.'+$ippolacz
@@ -6623,7 +6925,7 @@ $Dom2.Add_IsMouseCapturedChanged({
         toend      
     } elseif ($a -eq "Ping") {
         # Ping
-        $pb.Visibility = "Visible"
+        waif
         $ping = $TextBox3.Text
     
         if ($ping) {
@@ -6650,7 +6952,7 @@ $Dom2.Add_IsMouseCapturedChanged({
         }
         toend
     } elseif ($a -eq "Ping - CMD") {
-        $pb.Visibility = "Visible"
+        waif
         $pingf = $TextBox3.Text
         if ($pingf) {
 
@@ -6658,6 +6960,8 @@ $Dom2.Add_IsMouseCapturedChanged({
             if ($ippolacz2 -like 'NEG*') {
                 $pingf = $pingf
             } elseif ($ippolacz2 -like 'K*') {
+                $pingf = $pingf
+            } elseif ($ippolacz2 -like '10.*') {
                 $pingf = $pingf
             } elseif ($ippolacz2 -notlike '192.168*') {
                 $pingf = '192.168.'+$pingf
@@ -6742,7 +7046,7 @@ Remove-Item C:\bg\czy.ps1 -Force
 
 # Email
 $Button12.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $ldapu = $TextBox3.Text
     if ($ldapu) {
         $TextBox2.AppendText("Zostanie utworzony email dla użytkownika o podanym p00000`r`n")
@@ -6849,7 +7153,7 @@ $Dom1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $a = $Dom1.SelectedItem
     if ($a -eq "Adres IP - Ostatni") {
-        $pb.Visibility = "Visible"
+        waif
         #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
         $loginlast = $TextBox3.Text
         if ($loginlast) {
@@ -6890,7 +7194,7 @@ $Dom1.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Adres IP - Wszystkie") {
         # Adres IP - Wszystkie
-        $pb.Visibility = "Visible"
+        waif
         $loginlast = $TextBox3.Text
         if ($loginlast) {
             $loginpath = "\\fs01\IT\Raporty\Logon\$loginlast"
@@ -6907,7 +7211,7 @@ $Dom1.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Nazwiska") {
         # Szukaj loginu po p
-        $pb.Visibility = "Visible"
+        waif
         $dom_loginu = $TextBox3.Text
         if ($dom_loginu) {
             $check_userAD = Get-ADUser -Identity $dom_loginu | Select-Object -ExpandProperty Name
@@ -6937,7 +7241,7 @@ $Dom1.Add_IsMouseCapturedChanged({
         }
         toend
     } elseif ($a -eq "SID") {
-        $pb.Visibility = "Visible"
+        waif
     
         $SID = $TextBox3.Text
     
@@ -6957,7 +7261,7 @@ $Dom1.Add_IsMouseCapturedChanged({
         }
         $pb.Visibility = "Hidden"
     } elseif ($a -eq "Domowy") {
-        $pb.Visibility = "Visible"
+        waif
     
         $domowy = $TextBox3.Text
     
@@ -6985,7 +7289,7 @@ $Rap1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $a = $Rap1.SelectedItem
     if ($a -eq "Użytkownicy") {
-        $pb.Visibility = "Visible"
+        waif
         $TextBox2.AppendText("Zawsze Aktualne`r`n")
 
         if ($GRID4.IsChecked -eq $true) {
@@ -7036,7 +7340,7 @@ AD Audit - Przygotował Michał Zbyl
         $pb.Visibility = "Hidden"
         toend
     } elseif ($a -eq "PC") {
-        $pb.Visibility = "Visible"
+        waif
         $TextBox2.AppendText("Zawsze Aktualne`r`n")
 
         if ($GRID4.IsChecked -eq $true) {
@@ -7099,7 +7403,7 @@ AD Audit - Przygotował Michał Zbyl
         $pb.Visibility = "Hidden"
         toend
     } elseif ($a -eq "PC - Ostatni") {
-        $pb.Visibility = "Visible"
+        waif
         $komp = (Get-ADComputer -Filter {Name -Like "K0*"} -Property * | Select-Object -Last 1)
         $kompLast = $komp | Select-Object -ExpandProperty Name
         $TextBox2.AppendText("`r`n")
@@ -7113,7 +7417,7 @@ AD Audit - Przygotował Michał Zbyl
 
 # Szukaj loginu po nazwisku - Esku
 $Button9.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $TextBox2.AppendText("Piszemy Polskie znaki. Wielkość liter nie ma znaczenia.`r`n")
 
     $uesku = $TextBox1.Text
@@ -7194,7 +7498,7 @@ Remove-Item C:\bg\czy.ps1 -Force
  })
 # Blokada-Wypisy
 $Button8.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $TextBox2.AppendText("Lista użytkowników blokujących wypisy.`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
      
@@ -7253,7 +7557,7 @@ Remove-Item C:\bg\czy.ps1 -Force
  })
 # Odblokuj - Esku
 $Button5.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first
     $first = $TextBox1.Text
     if ($first) {
@@ -7308,7 +7612,7 @@ $Button5.Add_Click({
  })
 # Odblokuj - Domena
 $Button4.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $dom_loginu = $TextBox3.Text
         if ($dom_loginu) {
             $check_userAD = Get-ADUser -Identity $dom_loginu | Select-Object -ExpandProperty Name
@@ -7350,7 +7654,7 @@ $Button4.Add_Click({
  })
 # Hasło - Domena
 $Button3.Add_Click({
-    $pb.Visibility = "Visible"
+    waif
     $dom_loginf = $TextBox3.Text
     if ($dom_loginf) {
         $check_userAD = Get-ADUser -Identity $dom_loginf | Select-Object -ExpandProperty Name
@@ -7402,7 +7706,7 @@ $Button3.Add_Click({
 # Specjalna Połącz
 $ButtonP.Add_Click({
     # Połącz
-    $pb.Visibility = "Visible"
+    waif
     #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
     $ippolacz = $TextBox3.Text
     $ipf = $TextBox3.Text
