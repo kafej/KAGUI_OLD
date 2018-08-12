@@ -10,7 +10,10 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
 }
 
 $theme = "BaseLight"
-# $theme = "BaseDark"
+#$theme = "BaseDark"
+
+#$title = "KAGUI Dark Edition"
+$title = "KAGUI"
 
 [xml]$xaml = @"
 <Controls:MetroWindow
@@ -19,7 +22,7 @@ $theme = "BaseLight"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
-        Title="KAGUI"
+        Title="$title"
         Height="500"
         Width="800"
         BorderThickness="0"
@@ -5211,6 +5214,22 @@ $theme = "BaseLight"
                             <RadioButton x:Name="ms2" Content="On" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                         </StackPanel>
 
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="200" HorizontalAlignment="Center" Margin="10,0,0,0">
+                            <Label Margin="10,50,0,0" VerticalAlignment="Top" Width="180" Foreground="White">
+                                <TextBlock TextWrapping="Wrap">Aplikacja ta tworzona i rozwijana jest w czasie wolnym od pracy i jest własnością Autora. Wszelkie pomysły mile widziane.</TextBlock> 
+                            </Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="200" HorizontalAlignment="Center" Margin="10,0,0,0">
+                            <Label Margin="10,0,0,0" VerticalAlignment="Top" Width="180" Foreground="White">
+                                <TextBlock TextWrapping="Wrap">GNU GPLv3</TextBlock>
+                            </Label>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="200" HorizontalAlignment="Center" Margin="10,0,0,0">
+                            <Label Margin="10,0,0,0" VerticalAlignment="Top" Width="180" Foreground="White">
+                                <TextBlock TextWrapping="Wrap">Michał Zbyl</TextBlock>
+                            </Label>
+                        </StackPanel>
+
                     </StackPanel>
                 </Grid>
             </Controls:Flyout>
@@ -5402,7 +5421,7 @@ $theme = "BaseLight"
             </StackPanel>
 
             <StatusBarItem HorizontalAlignment="Right" Margin="0,0,10,0">
-                <Label Content="Ver. B.4.8.6"/>
+                <Label Content="Ver. B.4.8.7"/>
             </StatusBarItem>
         </StatusBar>
 
@@ -6824,6 +6843,8 @@ $Dom2.Add_IsMouseCapturedChanged({
                 $ippolacz = $ippolacz
             } elseif ($ippolacz -like '10.*') {
                 $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '172.*') { 
+                $ippolacz = $ippolacz
             } elseif ($ippolacz -notlike '192.168*') {
                 $ippolacz = '192.168.'+$ippolacz
             }
@@ -6897,6 +6918,8 @@ $Dom2.Add_IsMouseCapturedChanged({
                 $ippolacz = $ippolacz
             } elseif ($ippolacz -like '10.*') {
                 $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '172.*') {
+                $ippolacz = $ippolacz
             } elseif ($ippolacz -notlike '192.168*') {
                 $ippolacz = '192.168.'+$ippolacz
             }
@@ -6962,6 +6985,8 @@ $Dom2.Add_IsMouseCapturedChanged({
             } elseif ($ippolacz2 -like 'K*') {
                 $pingf = $pingf
             } elseif ($ippolacz2 -like '10.*') {
+                $pingf = $pingf
+            } elseif ($ippolacz2 -like '172.*') {
                 $pingf = $pingf
             } elseif ($ippolacz2 -notlike '192.168*') {
                 $pingf = '192.168.'+$pingf
@@ -7749,6 +7774,10 @@ $ButtonP.Add_Click({
         if ($ippolacz2 -like 'NEG*') {
             $ippolacz = $ippolacz
         } elseif ($ippolacz2 -like 'K*') {
+            $ippolacz = $ippolacz
+        } elseif ($ippolacz2 -like '10.*') {
+            $ippolacz = $ippolacz
+        } elseif ($ippolacz2 -like '172.*') {
             $ippolacz = $ippolacz
         } elseif ($ippolacz -notlike '192.168*') {
             $ippolacz = '192.168.'+$ippolacz
