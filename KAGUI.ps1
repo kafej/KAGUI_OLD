@@ -9,6 +9,8 @@ foreach ($Assembly in (Dir $AssemblyLocation -Filter *.dll)) {
     [System.Reflection.Assembly]::LoadFrom($Assembly.fullName) | out-null
 }
 
+$zuo1 = "zuo"
+
 $theme = "BaseLight"
 #$theme = "BaseDark"
 
@@ -5237,8 +5239,8 @@ $title = "KAGUI"
     </Controls:MetroWindow.Flyouts>
 
     <Grid>
-        <StackPanel Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="350">
-            <TabControl HorizontalAlignment="Left" Height="350" VerticalAlignment="Top" Width="600">
+        <StackPanel Margin="10,10,10,10" HorizontalAlignment="Left" VerticalAlignment="Top" Height="420">
+            <TabControl HorizontalAlignment="Left" Height="420" VerticalAlignment="Top" Width="600">
                 <TabItem Header="Eskulap" Margin="0,0,0,0">
                     <Grid>
                         <StackPanel>
@@ -5253,35 +5255,34 @@ $title = "KAGUI"
                                 <Button x:Name="Button9" HorizontalAlignment="Left" Margin="-75,88,0,0" VerticalAlignment="Top" Width="75" Height="Auto" FontSize="9">
                                     <TextBlock TextWrapping="Wrap">Login po Nazwisku</TextBlock>
                                 </Button>
-                                <Button x:Name="Button8" HorizontalAlignment="Left" Margin="-75,130,0,0" VerticalAlignment="Top" Width="75" Height="Auto">
-                                    <TextBlock TextWrapping="Wrap">Blokada Wypisów</TextBlock>
+                                <Button x:Name="Buttonol" HorizontalAlignment="Left" Margin="-75,130,0,0" VerticalAlignment="Top" Width="75" Height="Auto" FontSize="9">
+                                    <TextBlock TextWrapping="Wrap">Ostatnie logowanie po Nazwisku</TextBlock>
                                 </Button>
-                                <Button x:Name="Button26" HorizontalAlignment="Left" Margin="-75,175,0,0" VerticalAlignment="Top" Width="75" Height="Auto">
-                                    <TextBlock TextWrapping="Wrap">Użytkownik Logi</TextBlock>
+                                <Button x:Name="Button8" HorizontalAlignment="Left" Margin="-75,184,0,0" VerticalAlignment="Top" Width="75" Height="Auto">
+                                    <TextBlock TextWrapping="Wrap">Blokady tabel w bazie</TextBlock>
                                 </Button>
                                 <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="TextBox1" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
                             </StackPanel>
 
-                            <GroupBox Header="Certyfikat" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="95,-250,0,0" Width="80" Height="77">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="Cer1" Margin="-4,-4,-4,-4" Width="80" />
+                            <GroupBox Header="Użytkownik" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="95,-180,0,0" Width="130" Height="180">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="Cer1" Margin="-4,-4,-4,-4" />
                             </GroupBox>
 
-                            <GroupBox Header="Pacjent" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="185,-177,0,0" Width="120" Height="150">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="Pac1" Margin="-4,-4,-4,0" Width="150" />
+                            <GroupBox Header="Pacjent" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="235,-180,0,0" Width="130" Height="180">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="Pac1" Margin="-4,-4,-4,0" Width="130" />
                             </GroupBox>
 
-                            <Rectangle Width="18" Height="19" Fill="White" Margin="-20,-301,0,0" >
+                            <Rectangle Width="24" Height="19" Fill="White" Margin="-180,-332,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_flag_bear}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <Rectangle Width="18" Height="19" Fill="White" Margin="110,-332,0,0" >
                                 <Rectangle.OpacityMask>
                                     <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_handicap}"/>
                                 </Rectangle.OpacityMask>
                             </Rectangle>
-
-                            <GroupBox Header="Konsultacje" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="315,-228,0,0" Width="100" Height="100">
-                                <StackPanel>
-                                    <TextBox x:Name="TextBox4" HorizontalAlignment="Center" Height="23" Margin="0,0,5,0" VerticalAlignment="Top" Width="60"/>
-                                    <Button x:Name="Button7" Content="Konsultacje" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Width="75" Height="30" FontSize="9" />
-                                </StackPanel>
-                            </GroupBox>
 
                         </StackPanel>
                     </Grid>
@@ -5311,14 +5312,75 @@ $title = "KAGUI"
                                 <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="TextBox3" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="315"/>
                             </StackPanel>
 
-                            <GroupBox Header="Szukaj po Loginie" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="95,-145,0,0" Width="120" Height="150">
+                            <GroupBox Header="Szukaj po Loginie" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="95,-150,0,0" Width="150" Height="180">
                                 <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="Dom1" Margin="-4,-4,-4,0" Width="150" />
                             </GroupBox>
 
-                            <GroupBox Header="Po IP" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="225,-150,0,0" Width="120" Height="150">
+                            <Rectangle Width="18" Height="18" Fill="White" Margin="-130,-332,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_paypal}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <GroupBox Header="Połącz po P/IP" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="255,-260,0,0" Width="120" Height="100">
                                 <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="dom2" Margin="-4,-4,-4,-4" Width="150" />
                             </GroupBox>
 
+                            <Rectangle Width="18" Height="18" Fill="White" Margin="130,-332,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_monitor_to}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <TabItem Header="Sieć" Margin="0,0,0,0">
+                    <Grid>
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal" Width="140" HorizontalAlignment="Right" Margin="0,-30,0,0">
+                                <RadioButton x:Name="GRID3" Content="GRID" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" />
+                                <RadioButton x:Name="HTML3" Content="HTML" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            </StackPanel>
+
+                            <Button x:Name="siecbutton" Content="Gniazdka" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Height="30" />
+
+                            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="400" HorizontalAlignment="Left" Margin="85,-40,0,0">
+                                <TextBox Controls:TextBoxHelper.ClearTextButton="True" x:Name="TextBox5" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" VerticalAlignment="Top" Width="240"/>
+                            </StackPanel>
+
+                            <GroupBox Header="Szukaj MAC/IP" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="10,5,0,0" Width="120" Height="180">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="siec2" Margin="-4,-4,-4,-4" Width="150" />
+                            </GroupBox>
+
+                            <GroupBox Header="Po IP" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="140,-180,0,0" Width="100" Height="180">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="siec3" Margin="-4,-4,-4,-4" Width="120" />
+                            </GroupBox>
+
+                            <GroupBox Header="Terminal" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="250,-180,0,0" Width="100" Height="180">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="siec4" Margin="-4,-4,-4,-4" Width="120" />
+                            </GroupBox>
+
+                            <Rectangle Width="18" Height="19" Fill="White" Margin="-360,-334,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_magnify}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <Rectangle Width="18" Height="19" Fill="White" Margin="-140,-334,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_network}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <Rectangle Width="18" Height="19" Fill="White" Margin="80,-334,0,0" >
+                                <Rectangle.OpacityMask>
+                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_monitor_identify}"/>
+                                </Rectangle.OpacityMask>
+                            </Rectangle>
+
+                            <DataGrid Name="Datagrid" HorizontalAlignment="Left" Height="150" Margin="390,0,0,0" VerticalAlignment="Top" Width="190"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
@@ -5326,19 +5388,39 @@ $title = "KAGUI"
                 <TabItem Header="RTG" Margin="0,0,0,0">
                     <Grid>
                         <StackPanel>
-                            <GroupBox Header="Robot1" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="10,0,0,0" Width="120" Height="150">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG1" Margin="-4,-4,-4,0" Width="150" />
+                            <GroupBox Header="Robot 1" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="10,10,0,0" Width="80" Height="156">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG1" Margin="-4,-4,-4,0" Width="100" />
                             </GroupBox>
-                            <GroupBox Header="Robot2" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="140,-150,0,0" Width="120" Height="150">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG2" Margin="-4,-4,-4,0" Width="150" />
+                            <GroupBox Header="Robot 2" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="100,-156,0,0" Width="80" Height="156">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG2" Margin="-4,-4,-4,0" Width="100" />
                             </GroupBox>
-                            <GroupBox Header="Robot3" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="270,-150,0,0" Width="120" Height="150">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG3" Margin="-4,-4,-4,0" Width="150" />
+                            <GroupBox Header="Robot 3" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="190,-156,0,0" Width="80" Height="156">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG3" Margin="-4,-4,-4,0" Width="100" />
                             </GroupBox>
-                            <GroupBox Header="Robot4" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="400,-150,0,0" Width="120" Height="150">
-                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG4" Margin="-4,-4,-4,0" Width="150" />
+                            <GroupBox Header="Robot 4" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="280,-156,0,0" Width="80" Height="156">
+                                <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="RTG4" Margin="-4,-4,-4,0" Width="100" />
                             </GroupBox>
                         </StackPanel>
+                        <Rectangle Width="14" Height="20" Fill="White" Margin="-440,-327,0,0" >
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_bender}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Rectangle Width="14" Height="20" Fill="White" Margin="-260,-327,0,0" >
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_bender}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Rectangle Width="14" Height="20" Fill="White" Margin="-80,-327,0,0" >
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_bender}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
+                        <Rectangle Width="14" Height="20" Fill="White" Margin="100,-327,0,0" >
+                            <Rectangle.OpacityMask>
+                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_futurama_bender}"/>
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                     </Grid>
                 </TabItem>
 
@@ -5350,7 +5432,7 @@ $title = "KAGUI"
                                 <RadioButton x:Name="HTML4" Content="HTML" Margin="10,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="400" HorizontalAlignment="Left" Margin="10,0,0,0">
+                            <StackPanel Orientation="Horizontal" FlowDirection="LeftToRight" Width="400" HorizontalAlignment="Left" Margin="10,10,0,0">
                                 <GroupBox Header="AD" FlowDirection="LeftToRight" HorizontalAlignment="Left" Margin="0,0,0,0" Width="120" Height="150">
                                     <ListBox SelectionMode="Single" ItemsSource="{Binding}" x:Name="rap1" Margin="-4,-4,-4,0" Width="150" />
                                 </GroupBox>
@@ -5372,13 +5454,60 @@ $title = "KAGUI"
                                 </Rectangle>
                             </StackPanel>
 
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,70,0,0">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="380,-500,0,0">
+                                <Button x:Name="RapB1" Width="45" HorizontalAlignment="Left" Background="Transparent" Height="45" Margin="20,-260,4,0" Style="{DynamicResource MetroCircleButtonStyle}" >
+                                    <Rectangle Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="CornFlowerBlue">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_printer}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+
+                                <Button x:Name="RapB2" Width="45" HorizontalAlignment="Left" Background="Transparent" Height="45" Margin="-6,-200,0,60" Style="{DynamicResource MetroCircleButtonStyle}" >
+                                    <Rectangle Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="CornFlowerBlue">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_book_contact}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+
+                                <Button x:Name="RapB3" Width="45" HorizontalAlignment="Left" Background="Transparent" Height="45" Margin="-2,-200,0,60" Style="{DynamicResource MetroCircleButtonStyle}" >
+                                    <Rectangle Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="CornFlowerBlue">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_social_wikipedia}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+
+                                <Button x:Name="RapB4" Width="45" HorizontalAlignment="Left" Background="Transparent" Height="45" Margin="-2,-200,0,60" Style="{DynamicResource MetroCircleButtonStyle}" >
+                                    <Rectangle Width="20" Height="20" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="CornFlowerBlue">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_calendar_dollar}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+
+                                <Button x:Name="RapB5" Width="45" HorizontalAlignment="Left" Background="Transparent" Height="45" Margin="-88,-115,0,60" Style="{DynamicResource MetroCircleButtonStyle}" >
+                                    <Rectangle Width="28" Height="28" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="CornFlowerBlue">
+                                        <Rectangle.OpacityMask>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_ticket}"/>
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </Button>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,64,0,0">
                                 <DatePicker HorizontalAlignment="Left" x:Name="datz1" Margin="0,20,0,0" VerticalAlignment="Top" Width="116"/>
                                 <Label Content="Zakres: (2018-06-21)" HorizontalAlignment="Left" Margin="-120,0,0,0" VerticalAlignment="Top" Width="120"/>
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,4,0,0">
                                 <DatePicker HorizontalAlignment="Left" x:Name="datz2" Margin="0,0,0,0" VerticalAlignment="Top" Width="116"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="400,4,0,0">
+                                <Label Content="Ilość (np. Konsultacji):" HorizontalAlignment="Left" Margin="-4,0,0,0" Width="160"/>
+                                <TextBox x:Name="TextBox4" HorizontalAlignment="Left" Height="23" Margin="-154,22,0,0" Width="60"/>
                             </StackPanel>
 
                         </StackPanel>
@@ -5401,13 +5530,13 @@ $title = "KAGUI"
 
         <Grid>
             <StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="380,287,0,0">
-                    <Rectangle Width="18" Height="18" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White">
+                <Button x:Name="wyda" Width="22" HorizontalAlignment="Left" Background="Transparent" Height="22" Margin="380,285,0,0" Style="{DynamicResource MetroCircleButtonStyle}" >
+                    <Rectangle Width="18" Height="18" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Fill="White">
                         <Rectangle.OpacityMask>
                             <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_information_circle}"/>
                         </Rectangle.OpacityMask>
                     </Rectangle>
-                </StackPanel>
+                </Button>
             </StackPanel>
         </Grid>
 
@@ -5421,7 +5550,7 @@ $title = "KAGUI"
             </StackPanel>
 
             <StatusBarItem HorizontalAlignment="Right" Margin="0,0,10,0">
-                <Label Content="Ver. B.4.8.7"/>
+                <Label Content="Ver. B.5.1.2"/>
             </StatusBarItem>
         </StatusBar>
 
@@ -5456,32 +5585,138 @@ $FlyOutContent = $Form.Findname("FlyOutContent")
 
 $datz2.Text = Get-Date -UFormat "%Y-%m-%d"
 
-$Dom2.Items.Add("MAC Terminala")
-$Dom2.Items.Add("Połącz - VNC")
-$Dom2.Items.Add("Połącz - RDP")
-$Dom2.Items.Add("Ping - CMD")
-$Dom2.Items.Add("Ping")
+$wyda.add_Click({
+    $TextBox2.Text = ''
+    $TextBox2.AppendText("$wydanie`r`n")
+    $TextBox2.AppendText("`r`n")
+})
+
+$wydanie = "
+Wydanie Beta 5.1.2
+- Ogólne: Poprawki
+- Eskulap: Dodanie ostatniego logowania w Esku po Nazwisku
+`r`n
+Wydanie Beta 5.0.8
+- Sieć: Dodany grid z vlanami
+`r`n
+Wydanie Beta 5.0.5 :
+- Ogólne: Info o zmianach po naciśnięciu ikonki 'i'
+- Eskulap: Dodanie szukania wyników pacjenta po nazwisku
+- Sieć: Modyfikacja funkcji 'Na Switchu' w celach lepszego wyświetlania w GRID
+- Raporty: Dodanie raportu LAB dla pacjentów na podstawie dady i ilości
+`r`n
+Wydanie Beta 5.0.0 :
+- Ogólne: Dodanie zakładki Sieć
+- Ogólne: Zmiana wyglądu i rozmieszczenia elementów
+- Ogólne: Duplikaty nie będą wskakiwać do listy
+`r`n
+- Eskulap: Blokady tabel w bazie - Nowa funkcja pokazująca wszystkie używane i zablokowane tabele. Po wybraniu w GRID nastąpi ubicie sesji użytkownika.
+- Eskulap: Sprawdzanie, czy Użytkownik posiada logowanie kartą
+- Eskulap: Poprawiona funkcja Wyszukania i odblokowania konsultacji
+`r`n
+- Domena:
+- Przerobiona funkcja do utworzenia konta mailowego. Lepsze działanie
+- Szukanie Oddziału po loginie (Oddział z domeny)
+- Szukanie daty wygaśnięcia obecnego certyfikatu dla loginu (dzięki czemu wiadomo, czy trzeba generować nowy, czy np. na domyślnym jest)
+`r`n
+- Sieć:
+- Szukanie po MAC/IP W pliku DHCP
+- Szukanie po MAC/IP Na głównym przełączniku Core
+- Szukanie po MAC/IP W LibreNMS
+- Otwieranie strony WWW z wpisanym adresem
+- Szukanie Terminala po MAC
+- Szukanie Drukarek podłączonych do Terminala po adresie IP
+- Podgląd pliku konfiguracyjnego danego terminala po jego adresie IP
+- Inwentaryzacja gniazdek (\\fs01\IT\!DOKUMENTACJA\Siec_inwentaryzacja.csv ten plik trzeba aktualizować)
+`r`n
+- RTG:
+- Połączenie WWW do urządzeń nagrywających
+- Połączenie VNC do serwera obsługującego nagrywanie
+- Połączenie  do serwera obsługującego nagrywanie
+`r`n
+- Raporty:
+- Wyszuaknie ostatniego zajętego Loginu w AD
+- Pacjent - LAB - to jest bardzo ogromny raport. Rok takiego raportu robi się godzinę. Dla testów radzę wybrać przedział np. 1 lipiec do 2 lipca. Pokazuje pacjenta, jakie rozpoznanie, jakie badania itp.
+- Konsultacje - raport zbiorczy konsultacji dla określonego przedziału i ilości.
+- Przycisk drukarki: Do LibreNMS
+- Przycisk telefony: Do www z tel
+- Przycisk wiki: Do naszego wiki
+- Przycisk dyżury: Do dyżurów
+- Przycisk ticket: Do zgłoszeń `r`n"
+
+$vlan = Import-Csv "$PSScriptRoot\Themes\vlan.csv" -Header "VLAN","Nazwa"
+
+$Datagrid.ItemsSource = $vlan
+
+$Dom2.Items.Add("VNC")
+$Dom2.Items.Add("RDP")
 
 $esk.Items.Add("Plan Operacyjny")
+$esk.Items.Add("Pacjent - LAB")
+$esk.Items.Add("Pacjent - LAB-HEM")
+$esk.Items.Add("Konsultacje")
 
 $Rap1.Items.Add("Użytkownicy")
+$Rap1.Items.Add("Login - Ostatni")
 $Rap1.Items.Add("PC")
 $Rap1.Items.Add("PC - Ostatni")
 
 $Dom1.Items.Add("Adres IP - Ostatni")
 $Dom1.Items.Add("Adres IP - Wszystkie")
 $Dom1.Items.Add("Nazwiska")
-$Dom1.Items.Add("SID")
+$Dom1.Items.Add("Oddziału")
+$Dom1.Items.Add("Certyfikatu")
 $Dom1.Items.Add("Domowy")
+$Dom1.Items.Add("SID")
 
-$Cer1.Items.Add("Dodaj")
-$Cer1.Items.Add("Usuń")
+$Cer1.Items.Add("Certyfikat - Sprawdź")
+$Cer1.Items.Add("Certyfikat - Dodaj")
+$Cer1.Items.Add("Certyfikat - Usuń")
+$Cer1.Items.Add("Logi")
 
 $Pac1.Items.Add("Info")
 $Pac1.Items.Add("Status")
 $Pac1.Items.Add("ID Operacji")
 $Pac1.Items.Add("RTG - Skierowanie")
 $Pac1.Items.Add("Konsultacja")
+$Pac1.Items.Add("Lab")
+
+# $RTG1.Items.Add("Skrypt")
+# $RTG1.Items.Add("Restart")
+$RTG1.Items.Add("WWW")
+$RTG1.Items.Add("VNC")
+$RTG1.Items.Add("RDP")
+
+# $RTG2.Items.Add("Skrypt")
+# $RTG2.Items.Add("Restart")
+$RTG2.Items.Add("WWW")
+$RTG2.Items.Add("VNC")
+$RTG2.Items.Add("RDP")
+
+# $RTG3.Items.Add("Skrypt")
+# $RTG3.Items.Add("Restart")
+$RTG3.Items.Add("WWW")
+$RTG3.Items.Add("VNC")
+$RTG3.Items.Add("RDP")
+
+# $RTG4.Items.Add("Skrypt")
+# $RTG4.Items.Add("Restart")
+$RTG4.Items.Add("VNC")
+$RTG4.Items.Add("RDP")
+
+$siec2.Items.Add("W DHCP")
+$siec2.Items.Add("Na Switchu")
+$siec2.Items.Add("W LibreNMS")
+
+$siec3.Items.Add("VNC")
+$siec3.Items.Add("WWW")
+$siec3.Items.Add("RDP")
+$siec3.Items.Add("Ping - CMD")
+$siec3.Items.Add("Ping")
+
+$siec4.Items.Add("MAC")
+$siec4.Items.Add("Drukarki")
+$siec4.Items.Add("Konfiguracyjny")
 
 Function wai {
     $SyncHash = [hashtable]::Synchronized(@{Window = $Form; TextBox2 = $TextBox2; pb = $pb; TextBox1 = $TextBox1; dialgResult = $dialgResult})
@@ -5635,9 +5870,23 @@ function PolePusteB {
 }
 
 function toend {
-    $TextBox2.Focus();
-    $TextBox2.CaretIndex = Status.Text.Length;
-    $TextBox2.ScrollToEnd();
+    $TextBox2.Focus()
+    $TextBox2.CaretIndex = Status.Text.Length
+    $TextBox2.ScrollToEnd()
+
+    $ListBox.SelectedIndex = $ListBox.Items.Count -1
+}
+
+function lb ($k) {
+    $l = $ListBox.SelectedItem
+    if ($l -ne $k) {
+        if ($k.substring(0,1) -eq "p") {
+            $f1 = $k
+        } else {
+            $f1 = $k.substring(0,1).toupper()+$k.substring(1).tolower()
+        }
+        $ListBox.Items.Add("$f1")
+    }
 }
 
 $ms2.Add_Click({
@@ -5669,10 +5918,12 @@ if (($userr -eq $p1) -or ($userr -eq $p2) -or ($userr -eq $p3) -or ($userr -eq $
     $group = "informatycy"
     $members = Get-ADGroupMember -Identity $group -Recursive | Select-Object -ExpandProperty SamAccountName
 }
-$zuo1 = "zuo"
+
 If (($members -contains $userr) -or ($zuo1 -eq "zuo")) {
     $l = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("="))
     $p = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("=="))
+    $l1 = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String(""))
+    $l2 = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("=="))
     ## To connect by SID
     $ora_server = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String(""))
     $ora_user = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String("="))
@@ -5719,7 +5970,7 @@ $Buttonwf.add_Click({
         $TextBox2.AppendText("$name`r`n")
         $TextBox2.AppendText("Wiadomość o treści została wysłana:`r`n")
         $TextBox2.AppendText("$msg`r`n")
-        $ListBox.Items.Add("$name")
+        lb $name
     }
 
     $CustomDialog.RequestCloseAsync()
@@ -5740,12 +5991,14 @@ $ListBox.Add_IsMouseCapturedChanged({
         $c = $a.split('-')[1]
         $b = $c.split(' ')[1]
         $TextBox3.Text = $b
+        $TextBox5.Text = $b
     } elseif ($a -like "ID*") { 
         $c = $a.split(':')[1]
         $b = $c.split(' ')[1]
         $TextBox1.Text = $b
     } else {
         $TextBox3.Text = $a
+        $TextBox5.Text = $a
     }
     # $ListBox.SelectedIndex = -1
 })
@@ -5800,48 +6053,6 @@ Function Button26 {
     $Worker.BeginInvoke()
 }
 
-# Pacjent - Log
-$Button26.Add_Click({
-    $TextBox2.AppendText("Informacje o Użytkowniku`r`n") | Out-Default 
-    $TextBox2.AppendText("`r`n")
-    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n") | Out-Null
-    waif
-
-    $nazwal = $TextBox1.Text
-
-    if ($nazwal) {
-        ## by SID
-        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
-        
-        $query = "SELECT * FROM STATS`$USER_LOG WHERE USER_ID = '$nazwal'"
-        
-        $connection.open()
-        
-        $command=$connection.CreateCommand()
-        $command.CommandText=$query
-        $wynik = $command.ExecuteReader()
-        
-        $table = new-object System.Data.DataTable
-        $table.Load($wynik)
-        
-        $connection.close()
-            
-        $spr = $table 
-        $sprfin = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
-
-        $TextBox2.AppendText("`r`n")
-        $TextBox2.AppendText("$sprfin`r`n")
-        $pb.Visibility = "Hidden"
-    } else {
-        $TextBox2.AppendText("Informacje o Użytkowniku`r`n")
-        $TextBox2.AppendText("`r`n")
-        $TextBox2.AppendText("Pole puste`r`n")
-        PolePuste
-        $pb.Visibility = "Hidden"
-    }
-    toend
-})
-
 #Otwórz Tools
 $BrowseT.Add_Click({
     waif
@@ -5850,13 +6061,144 @@ $BrowseT.Add_Click({
     toend
 })
 
-# Certyfikat
+# Esku-Użytkownik
+# Cer-Sprawdź
+# Cer-Dodaj
 # Cer-Usuń
+# Logi
 $Cer1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $a = $Cer1.SelectedItem
-    if ($a -eq "Dodaj") {
+    if ($a -eq "Certyfikat - Sprawdź") {
+        # Certyfikat - Sprawdź
+        waif
+        Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
+        $first = $TextBox1.Text
+        if ($first) {
+            $first = $first.toupper()
+
+            ## by SID
+            $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+
+            $querycheck = "Select * FROM RI_PRACOWNICY where PRAC_USERNAME LIKE '$first'"
+            $connection.open()
+    
+            $command3=$connection.CreateCommand()
+            $command3.CommandText=$querycheck
+            $wynik = $command3.ExecuteReader()
+
+            if ($wynik.HasRows) {
+                $query = 'alter user '+$first+' identified by "Szpital.1" account unlock'
+                $remad = 'CN='+$first+'_Esk,CN=eskulapConfiguration,DC=SZPITAL,DC=LOCAL'
+                $query2 = "update RI_PRACOWNICY SET PRAC_PASS_CHANGE_DATE = (sysdate)-32 WHERE PRAC_USERNAME = '$first'"
+    
+                $command=$connection.CreateCommand()
+                $command2=$connection.CreateCommand()
+                $command.CommandText=$query
+                $command2.CommandText=$query2
+                $command.ExecuteReader()
+                $command2.ExecuteReader()
+    
+                Remove-ADObject -Identity $remad -Confirm:$false
+    
+                $connection.close()
+                 
+                ## by SID
+                $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+                $query = "select *
+                  from SZ_PRAC_CONFIG
+                 where PC_ID = ( select max(PC_ID) from SZ_PRAC_CONFIG )"
+                
+                $connection.open()
+                
+                $command=$connection.CreateCommand()
+                $command.CommandText=$query
+                $reader=$command.ExecuteReader()
+                
+                $table = new-object System.Data.DataTable
+                $table.Load($reader)
+                
+                $connection.close()
+                
+                $pkiid = $table | Select-Object -ExpandProperty PC_ID
+                
+                #Write-Output $pkiid
+                $pkiidjeden = ($pkiid+1)
+                #Write-Output $pkiidjeden
+                
+                $querycheck = "Select * FROM RI_PRACOWNICY where PRAC_USERNAME LIKE '$first'"
+                
+                $connection.open()
+                
+                $command=$connection.CreateCommand()
+                $command.CommandText=$querycheck
+                $readeruser=$command.ExecuteReader()
+                
+                $tablepki = new-object System.Data.DataTable
+                $tablepki.Load($readeruser)
+                
+                $connection.close()
+                
+                $pkiuser = $tablepki | Select-Object -ExpandProperty PRAC_PRACOWNIK_ID
+                
+                $TextBox2.AppendText("ID użytkownika: $pkiuser`r`n")
+                
+                $querycheck = "Select * FROM SZ_PRAC_CONFIG where PC_PRAC_PRACOWNIK_ID LIKE '$pkiuser'"
+                
+                $connection.open()
+                
+                $command=$connection.CreateCommand()
+                $command.CommandText=$querycheck
+                $readeruserid=$command.ExecuteReader()
+                
+                $tablepkiexist = new-object System.Data.DataTable
+                $tablepkiexist.Load($readeruserid)
+                
+                $connection.close()
+                
+                If ($tablepkiexist.HasRows) {
+                    $TextBox2.AppendText("Użytkownik posiadał ustawiania logowania kartą w Esku.`r`n")
+                    PolePusteC1
+                } else {        
+                    $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                    $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Użytkownik $first nie posiada logowania kartą",$okOnly)
+                    $dialgResult.Text = $result
+                    If ($result -eq "Affirmative"){ 
+                        $dialgResult.Foreground = "Green"
+                    }
+                    else{
+                        $dialgResult.Foreground = "Red"
+                    }
+
+                    $TextBox2.AppendText("Użytkownik $first nie posiada logowania kartą.`r`n")
+                }
+            } else {
+                $hasko_Esku = "Brak takiego użytkownika: $first"
+            }
+            if ($hasko_Esku) {
+                $TextBox2.AppendText("$hasko_Esku")
+                $TextBox2.AppendText("`r`n")
+    
+                $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","$hasko_Esku",$okOnly)
+                $dialgResult.Text = $result
+                If ($result -eq "Affirmative"){ 
+                    $dialgResult.Foreground = "Green"
+                }
+                else{
+                    $dialgResult.Foreground = "Red"
+                }
+            }
+
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Login pusty`r`n")
+            PolePusteL
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "Certyfikat - Dodaj") {
         # Certyfikat
         waif
         Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
@@ -6002,7 +6344,7 @@ $Cer1.Add_IsMouseCapturedChanged({
             $pb.Visibility = "Hidden"
         }
         toend
-    } elseif ($a -eq "Usuń") {
+    } elseif ($a -eq "Certyfikat - Usuń") {
         # Cer-Usuń
         waif
         Clear-Variable $querycheck, $command3, $command, $command2, $wynik, $hasko_Esku, $wynik2, $first, $TextBox3
@@ -6123,6 +6465,49 @@ $Cer1.Add_IsMouseCapturedChanged({
             PolePusteL
             $pb.Visibility = "Hidden"
         }
+    } elseif ($a -eq "Logi") {
+        # Logi
+        waif
+        $TextBox2.AppendText("Informacje o Użytkowniku`r`n") | Out-Default 
+        $TextBox2.AppendText("`r`n")
+        $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n") | Out-Null
+    
+        $nazwal = $TextBox1.Text
+        $nazwal = $nazwal.toupper()
+    
+        if ($nazwal) {
+            ## by SID
+            $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+            
+            $query = "SELECT * FROM STATS`$USER_LOG WHERE USER_ID = '$nazwal' ORDER BY LOGON_DAY DESC"
+            
+            $connection.open()
+            
+            $command=$connection.CreateCommand()
+            $command.CommandText=$query
+            $wynik = $command.ExecuteReader()
+            
+            $table = new-object System.Data.DataTable
+            $table.Load($wynik)
+            
+            $connection.close()
+                
+            $spr = $table 
+            $sprfin = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$sprfin`r`n")
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Informacje o Użytkowniku`r`n")
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Pole puste`r`n")
+            PolePuste
+            $pb.Visibility = "Hidden"
+        }
+        toend
+
+        $pb.Visibility = "Hidden"
     }
     $Cer1.SelectedIndex = -1
     toend
@@ -6131,93 +6516,6 @@ $Cer1.Add_IsMouseCapturedChanged({
 # Konsultacje
 $il = 140
 $TextBox4.Text = $il
-$Button7.Add_Click({
-    waif
-    $il = $TextBox4.Text
-    $TextBox4.Text = $il
-    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
-    
-    ## by SID
-    $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
-    $query = "select * from (select * FROM OD_KONSULTACJE ORDER BY KON_KONSULTACJA_ID DESC) KON_KONSULTACJA_ID WHERE KON_STATUS NOT LIKE 'B' AND rownum <=$il order by rownum DESC"
-
-    $connection.open()
-
-    $command=$connection.CreateCommand()
-    $command.CommandText=$query
-    $reader=$command.ExecuteReader()
-
-    $table = new-object System.Data.DataTable
-    $table.Load($reader)
-
-    $connection.close()
-
-    $spr = $table | Select-Object KON_KONSULTACJA_ID, KON_DATA, KON_TEKST, KON_TYTUL
-
-    if ($GRID1.IsChecked -eq $true) {
-        $sprWynik = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | select-Object -ExpandProperty 'KON_KONSULTACJA_ID'
-    } elseif ($HTML1.IsChecked -eq $true) {
-
-$Header = @"
-<meta charset="utf-8">
-<style>
-TABLE {border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}
-TH {border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color: #6495ED;}
-TD {border-width: 1px;padding: 3px;border-style: solid;border-color: black;}
-P {font-size:24px; font-weight:bold;}
-.odd  { background-color:#ffffff; }
-.even { background-color:#dddddd; }
-</style>
-<title>
-Konsultacje - Przygotował Michał Zbyl
-</title>
-"@
-        $spr | ConvertTo-Html -Head $Header | Out-File C:\bg\kons.html | Wait-Process
-        Invoke-Item C:\bg\kons.html
-$File = @"
-Start-Sleep -s 2
-Remove-Item C:\bg\kons.html -Force
-Remove-Item C:\bg\czy.ps1 -Force
-"@
-            $File | Out-File -FilePath C:\bg\czy.ps1 -Encoding ASCII | Wait-Process
-            Invoke-Item (Start-Process powershell "C:\bg\czy.ps1")
-    }
-
-    $TextBox2.AppendText("Otworzy się Grid z ostatnimi konsultacjami bez parametru B`r`n")
-    $TextBox2.AppendText("OSTATNIE NA DOLE !!! Można sortować`r`n")
-
-    if ($sprWynik) {
-
-        $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
-        ## To connect by SID
-        $query2 = "update OD_KONSULTACJE set KON_STATUS = 'B', KON_UPD_USER = '', KON_UPD_DATE = '' where KON_KONSULTACJA_ID = $sprWynik"
-        $connection.open()
-
-        $command2=$connection.CreateCommand()
-        $command2.CommandText=$query2
-        $command2.ExecuteReader()
-
-        $connection.close()
-
-        $TextBox2.AppendText("`r`n")
-        $TextBox2.AppendText("Konsultacja o ID $sprWynik została odblokowana`r`n")
-        $TextBox2.AppendText("`r`n")
-
-        $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
-        $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Konsultacja o ID $sprWynik została odblokowana",$okOnly)
-        $dialgResult.Text = $result
-        If ($result -eq "Affirmative"){ 
-            $dialgResult.Foreground = "Green"
-        }
-        else{
-            $dialgResult.Foreground = "Red"
-        }
-
-        $pb.Visibility = "Hidden"
-    }
-    $pb.Visibility = "Hidden"
-    toend
- })
 # Hasło
 $Button1.Add_Click({
     waif
@@ -6285,6 +6583,7 @@ $Button2.Add_Click({
 # ID Operacji
 # Ponowne Skierowanie
 # Konsultacja
+# LAB
 $Pac1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
@@ -6432,7 +6731,8 @@ Remove-Item C:\bg\czy.ps1 -Force
     
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("ID Pacjenta: $sprfin`r`n")
-            $ListBox.Items.Add("ID Pacjenta: $sprfin")
+            $sprfin = "ID Pacjenta: $sprfin"
+            lb $sprfin
     
             if ($sprfin) {
                 $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
@@ -6454,7 +6754,9 @@ Remove-Item C:\bg\czy.ps1 -Force
                 $sprfinf = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | select-Object -ExpandProperty 'LEC_LECZENIE_ID'
     
                 $TextBox2.AppendText("ID Operacji: $sprfinf`r`n")
-                $ListBox.Items.Add("ID Operacji: $sprfinf")
+
+                $sprfinf = "ID Operacji: $sprfinf"
+                lb $sprfinf
             }
             $pb.Visibility = "Hidden"
         } else {
@@ -6634,18 +6936,68 @@ Remove-Item C:\bg\czy.ps1 -Force
             $pb.Visibility = "Hidden"
         }
         toend
+    } elseif ($a -eq "Lab") {
+        waif
+        $TextBox2.AppendText("Piszemy Polskie znaki. Wielkość liter nie ma znaczenia.`r`n")
+    
+        $uesku = $TextBox1.Text
+        $ueskuf = $uesku.substring(0,1).toupper()+$uesku.substring(1).tolower()
+    
+        if ($uesku) {
+            $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+
+            $d2 = $datz2.ToString()
+            $d1 = $d2.split(' ')[0]
+
+            $d4 = $datz1.ToString()
+
+            if ($d4) {
+                $d3 = $d4.split(' ')[0]
+            } else {
+                $d3 = $d1
+            }
+
+            ## by SID
+            $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+            $query = "select p_pacjent_id, p_imie, p_nazwisko, wbl_data, wbl_wynik, wbl_jednostka, wbl_opis, wbl_norma
+            from ri_pacjenci, od_wyniki_badan_lab 
+            where wbl_data between TO_DATE('$d3 00:00:01', 'YYYY-MM-DD HH24:MI:SS') AND TO_DATE('$d1 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and p_nazwisko='$uesku'"
+
+            $connection.open()
+
+            $command=$connection.CreateCommand()
+            $command.CommandText=$query
+            $reader=$command.ExecuteReader()
+
+            $table = new-object System.Data.DataTable
+            $table.Load($reader)
+
+            $connection.close()
+
+            $table | Out-GridView
+
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Pole puste`r`n")
+            PolePuste
+            $pb.Visibility = "Hidden"
+        }
     }
     $Pac1.SelectedIndex = -1
     toend
 })
 
 #Plan Operacyjny
+#LAB-HEM
+#LAB
+#Konsultacje
 $esk.Add_IsMouseCapturedChanged({
     waif
     $TextBox2.AppendText("`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $p = $esk.SelectedItem
     if ($p -eq "Plan Operacyjny") {
+        waif
         Clear-Variable -Name connection, query, command, reader, table, spr, d1
         ## by SID
 
@@ -6712,24 +7064,660 @@ Remove-Item C:\bg\czy.ps1 -Force
         }
         $TextBox2.AppendText("`r`n")
         $TextBox2.AppendText("Otworzy się strona z raportem`r`n")
+    } elseif ($p -eq "Pacjent - LAB") {
+        waif
+        $il = $TextBox4.Text
+        $TextBox4.Text = $il
+
+        $d2 = $datz2.ToString()
+        $d1 = $d2.split(' ')[0]
+
+        $d4 = $datz1.ToString()
+
+        if ($d4) {
+            $d3 = $d4.split(' ')[0]
+        } else {
+            $d3 = $d1
+        }
+
+        ## by SID
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+        $query = "select p_pacjent_id, p_imie, p_nazwisko, wbl_data, wbl_wynik, wbl_jednostka, wbl_opis, wbl_norma
+        from ri_pacjenci, od_wyniki_badan_lab 
+        where wbl_data between TO_DATE('$d3 00:00:01', 'YYYY-MM-DD HH24:MI:SS') AND TO_DATE('$d1 23:59:59', 'YYYY-MM-DD HH24:MI:SS') and rownum <=$il"
+
+        $connection.open()
+
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $reader=$command.ExecuteReader()
+
+        $table = new-object System.Data.DataTable
+        $table.Load($reader)
+
+        $connection.close()
+
+        $table | Out-GridView
+
+    } elseif ($p -eq "Pacjent - LAB-HEM") {
+        waif
+        $d2 = $datz2.ToString()
+        $d1 = $d2.split(' ')[0]
+
+        $d4 = $datz1.ToString()
+
+        if ($d4) {
+            $d3 = $d4.split(' ')[0]
+        } else {
+            $d3 = $d1
+        }
+
+        ## by SID
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+        $query = "select p_pacjent_id, p_imie, p_nazwisko, sz_ksiegi.formatuj_numer_v(po_ks_ksiega_id, po_nr_na_oddz, po_rok_ksiegi) kg, p_plec, p_data_ur, jo_symbol, p_data_zgonu,datka, 
+        ri_znajdz.znajdz_icd10(null, po_pobyt_id, null, 1,null, 'Z') zas,
+        (select ICD10_NAZWA_POL from RI_ICD10 where ICD10_NUMER_STAT=ri_znajdz.znajdz_icd10(null, po_pobyt_id, null, 1,null, 'Z')),
+        ri_znajdz.znajdz_icd10(null, po_pobyt_id, null, 1, null, 'W') wsp,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1479,datka) WBC,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1498,datka) NEUT,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1490,datka) LIMF,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1495,datka) MONO,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1477,datka) RBC,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1470,datka) HCT,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1487,datka) HGB,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1474,datka) MCV,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1492,datka) MCH,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1473,datka) MCHC,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1502,datka) RDV,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1476,datka) PLT,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1497,datka) MPV,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1795,datka) D_D,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1784,datka) BNP,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null, 1847,datka) CRP,
+        MF_get_wyn_bad_lab(p_pacjent_id, po_pobyt_id, null,1776,datka) PRCALT,
+        (select bd_nazwa from od_badania_new, rtg_pozycje_skierowania, rtg_skierowania 
+        where 1=1
+        and s_po_pobyt_id = po_pobyt_id 
+        and ps_s_skierowanie_id = s_skierowanie_id 
+        and bd_badanie_id = ps_bd_badanie_id
+        and s_data_pobrania = datka
+        and upper(bd_nazwa) like '%DOPP%' and rownum=1) dopp
+        from ri_pacjenci, ri_pobyty_w_szpitalu_new, ri_pobyty_na_oddzialach, sz_jednostki_organizacyjne, mf_wyniki
+        where p_pacjent_id = ps_p_pacjent_id
+        and ps_pobyt_id = po_ps_pobyt_id
+        and jo_jednostka_id = po_od_oddzial_id
+        and wbl_po_pobyt_id = po_pobyt_id
+        and ps_data_przyjecia between TO_DATE('$d3', 'YYYY-MM-DD') AND TO_DATE('$d1', 'YYYY-MM-DD')
+        group by p_pacjent_id, p_imie, p_nazwisko, sz_ksiegi.formatuj_numer_v(po_ks_ksiega_id, po_nr_na_oddz, po_rok_ksiegi), p_plec, p_data_ur, jo_symbol, p_data_zgonu,datka, po_pobyt_id"
+
+        $connection.open()
+
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $reader=$command.ExecuteReader()
+
+        $table = new-object System.Data.DataTable
+        $table.Load($reader)
+
+        $connection.close()
+
+        $spr = $table | Select-Object @{l="ID Pacjenta";e="P_PACJENT_ID"}, @{l="Imię";e="P_IMIE"}, @{l="Nazwisko";e="P_NAZWISKO"}, @{l="Księga Oddziałowa";e="KG"}, @{l="Płeć";e="P_PLEC"}, @{l="Data Urodzenia";e="P_DATA_UR"}, @{l="Oddział";e="JO_SYMBOL"}, @{l="Data Zgonu";e="P_DATA_ZGONU"}, @{l="Data Badania";e="DATKA"}, @{l="ZAS";e="ZAS"}, 
+        @{l="ZAS - Polska Nazwa";e="(SELECTICD10_NAZWA_POLFROMRI_ICD10WHEREICD10_NUMER_STAT=RI_ZNAJDZ.ZNAJDZ_ICD10(NULL,PO_POBYT_ID,NULL,1,NULL,'Z'))"}, @{l="WSP";e="WSP"}, @{l="WBC G/l";e="WBC"}, @{l="NEUT G/l";e="NEUT"}, @{l="LIMF G/l";e="LIMF"}, @{l="MONO G/l";e="MONO"}, @{l="RBC T/l";e="RBC"}, 
+        @{l="HCT %";e="HCT"}, @{l="HGB g/dl";e="HGB"}, @{l="MCV fl";e="MCV"}, @{l="MCH pg";e="MCH"}, @{l="MCHC g/dl";e="MCHC"}, @{l="RDV ";e="RDV"}, @{l="PLT G/l";e="PLT"}, @{l="MPV fl";e="MPV"}, @{l="D_D mg/l FEU";e="D_D"}, @{l="BNP pg/ml";e="BNP"}, @{l="CRP mg/dl";e="CRP"}, @{l="PRCALT ng/ml";e="PRCALT"}, @{l="DOPP";e="DOPP"}
+
+        $Pre = "Przygotował: Michał Zbyl."
+
+$Header = @"
+<meta charset="utf-8">
+<style>
+TABLE {border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}
+TH {border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color: #6495ED;}
+TD {border-width: 1px;padding: 3px;border-style: solid;border-color: black;}
+P {font-size:24px; font-weight:bold;}
+.odd  { background-color:#ffffff; }
+.even { background-color:#dddddd; }
+</style>
+<title>
+Pacjenci - LAB - Przygotował Michał Zbyl
+</title>
+"@
+
+        $spr | export-csv C:\PacjenciLAB-Roboczy.csv -notype -Encoding UTF8
+        # Invoke-Item C:\PacjenciLAB.csv
+
+        $hem = New-Object system.Data.DataTable hem
+
+        $tabl = Import-Csv "C:\PacjenciLAB-Roboczy.csv" -Header "ID Pacjenta", "Imię", "Nazwisko", "Księga Oddziałowa", "Płeć", "Data Urodzenia", "Oddział", "Data Zgonu",	"Data Badania", "ZAS", "ZAS - Polska Nazwa", "WSP", "WBC", "NEUT", LIMF, MONO, RBC, HCT, HGB, MCV, MCH, MCHC, RDV, PLT, MPV, D_D, BNP, CRP, PRCALT, DOPP, Wiek
+        
+        $tabl | ForEach-Object {
+                $du = $_."Data Urodzenia".Split(" ")
+                $_."Data Urodzenia" = $du[0]
+        
+                $dz = $_."Data Zgonu".Split(" ")
+                $_."Data Zgonu" = $dz[0]
+        
+                $db = $_."Data Badania".Split(" ")
+                $_."Data Badania" = $db[0]
+        
+                $duy = $du
+                $duy = $du.Split("-")
+                $duy = $duy[0]
+        
+                $gd = Get-Date -UFormat "%Y"
+                $gdf = $gd - $duy
+        
+                $wiek = $_.Wiek
+                $_.Wiek = $gdf
+        
+                $e = $_.RBC.Split(" ")
+                $_."RBC" = $e[0]
+        
+                $w = $_.WBC.Split(" ")
+                $_."WBC" = $w[0]
+        
+                $NEUT = $_.NEUT.Split(" ")
+                $_."NEUT" = $NEUT[0]
+        
+                $LIMF = $_.LIMF.Split(" ")
+                $_."LIMF" = $LIMF[0]
+                
+                $MONO = $_.MONO.Split(" ")
+                $_."MONO" = $MONO[0]
+        
+                $RBC = $_.RBC.Split(" ")
+                $_."RBC" = $RBC[0]
+        
+                $MCV = $_.MCV.Split(" ")
+                $_."MCV" = $MCV[0]
+        
+                $MCH = $_.MCH.Split(" ")
+                $_."MCH" = $MCH[0]
+        
+                $MCHC = $_.MCHC.Split(" ")
+                $_."MCHC" = $MCHC[0]
+        
+                $RDV = $_.RDV.Split(" ")
+                $_."RDV" = $RDV[0]
+        
+                $PLT = $_.PLT.Split(" ")
+                $_."PLT" = $PLT[0]
+        
+                $MPV = $_.MPV.Split(" ")
+                $_."MPV" = $MPV[0]
+        
+                $D_D = $_.D_D.Split(" ")
+                $_."D_D" = $D_D[0]
+        
+                $BNP = $_.BNP.Split(" ")
+                $_."BNP" = $BNP[0]
+                
+                $CRP = $_.CRP.Split(" ")
+                $_."CRP" = $CRP[0]
+        
+                $PRCALT = $_.PRCALT.Split(" ")
+                $_."PRCALT" = $PRCALT[0]
+        
+                $DOPP = $_.DOPP.Split(" ")
+                $_."DOPP" = $DOPP[0]
+        
+                $h = $_.HCT.Split(" ")
+                $_."HCT" = $h[0]
+        
+                $hc = $_.HGB.Split(" ")
+                $_."HGB" = $hc[0]
+        
+                $test = $_.WSP
+        
+                $lines = ''
+        
+                if ($test) {
+                    $_.WSP.Split(";") | ForEach-Object {
+                        ## by SID
+                        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+                        $query = "select ICD10_NAZWA_POL from RI_ICD10 where ICD10_NUMER_STAT='$_'"
+            
+                        $connection.open()
+            
+                        $command=$connection.CreateCommand()
+                        $command.CommandText=$query
+                        $reader=$command.ExecuteReader()
+            
+                        $table = new-object System.Data.DataTable
+                        $table.Load($reader)
+            
+                        $connection.close()
+            
+                        $spr = $table | Select-Object -ExpandProperty ICD10_NAZWA_POL
+            
+                        $lines += $spr+';'
+                    }
+                    $_."WSP" = $lines
+                }
+            }
+        $tabl | export-csv C:\PacjenciLAB-Finalny.csv -notype -Encoding UTF8
+        Import-Csv "C:\PacjenciLAB-Finalny.csv" | Select-Object "ID Pacjenta", "Imię", "Nazwisko", "Księga Oddziałowa", "Płeć", "Data Urodzenia", "Wiek", "Oddział", "Data Zgonu",	"Data Badania", "ZAS", "ZAS - Polska Nazwa", "WSP", "WBC", "NEUT", LIMF, MONO, RBC, HCT, HGB, MCV, MCH, MCHC, RDV, PLT, MPV, D_D, BNP, CRP, PRCALT, DOPP -Skip 1 | Out-GridView -Title "Przygotował Michał Zbyl"
+
+    } elseif ($p -eq "Konsultacje") {
+        waif
+        $il = $TextBox4.Text
+        $TextBox4.Text = $il
+        $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+        
+        ## by SID
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+        $query = "select p_pacjent_id, p_imie|| ' ' ||p_nazwisko, KON_KONSULTACJA_ID, KON_P_PACJENT_ID, KON_STATUS, KON_DATA, KON_TEKST, KON_TYTUL from ri_pacjenci, (select * FROM OD_KONSULTACJE ORDER BY KON_KONSULTACJA_ID DESC) KON_KONSULTACJA_ID WHERE p_pacjent_id=KON_P_PACJENT_ID and rownum <=$il order by rownum DESC"
+    
+        $connection.open()
+    
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $reader=$command.ExecuteReader()
+    
+        $table = new-object System.Data.DataTable
+        $table.Load($reader)
+    
+        $connection.close()
+    
+        $spr = $table | Select-Object KON_KONSULTACJA_ID, "p_imie||''||p_nazwisko", KON_STATUS, KON_DATA, KON_TEKST, KON_TYTUL
+    
+        if ($GRID4.IsChecked -eq $true) {
+            $sprWynik = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | select-Object -ExpandProperty 'KON_KONSULTACJA_ID'
+        } elseif ($HTML4.IsChecked -eq $true) {
+    
+$Header = @"
+<meta charset="utf-8">
+<style>
+TABLE {border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}
+TH {border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color: #6495ED;}
+TD {border-width: 1px;padding: 3px;border-style: solid;border-color: black;}
+P {font-size:24px; font-weight:bold;}
+.odd  { background-color:#ffffff; }
+.even { background-color:#dddddd; }
+</style>
+<title>
+Konsultacje - Przygotował Michał Zbyl
+</title>
+"@
+            $spr | ConvertTo-Html -Head $Header | Out-File C:\bg\kons.html | Wait-Process
+            Invoke-Item C:\bg\kons.html
+$File = @"
+Start-Sleep -s 2
+Remove-Item C:\bg\kons.html -Force
+Remove-Item C:\bg\czy.ps1 -Force
+"@
+                $File | Out-File -FilePath C:\bg\czy.ps1 -Encoding ASCII | Wait-Process
+                Invoke-Item (Start-Process powershell "C:\bg\czy.ps1")
+        }
+    
+        $TextBox2.AppendText("Otworzy się Grid z ostatnimi konsultacjami`r`n")
+        $TextBox2.AppendText("OSTATNIE NA DOLE !!! Można sortować`r`n")
+    
+        if ($sprWynik.HasRows) {
+    
+            $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+            ## To connect by SID
+            $query2 = "update OD_KONSULTACJE set KON_STATUS = 'B', KON_UPD_USER = '', KON_UPD_DATE = '' where KON_KONSULTACJA_ID = $sprWynik"
+            $connection.open()
+    
+            $command2=$connection.CreateCommand()
+            $command2.CommandText=$query2
+            $command2.ExecuteReader()
+    
+            $connection.close()
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Konsultacja o ID $sprWynik została odblokowana`r`n")
+            $TextBox2.AppendText("`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Konsultacja o ID $sprWynik została odblokowana",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
     }
     $esk.SelectedIndex = -1
     toend
 })
 
-# MAC/IP
-# Połącz - VNC
-# Połącz - RDP
-# Ping
-# Ping - CMD
+# VNC
+# RDP
 $Dom2.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
     $a = $Dom2.SelectedItem
+    if ($a -eq "VNC") {
+        # VNC
+        waif
+        #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
+        $ippolacz = $TextBox3.Text
+        $ipf = $TextBox3.Text
+    
+        $loginpath = "\\fs01\IT\Raporty\Logon\$ippolacz"
+    
+        $loginlastfile = Get-ChildItem $loginpath | Where-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.Name) -notLike "RDTS*" } | Sort-Object LastWriteTime | Select-Object -last 1 | Select-Object -ExpandProperty Name
+        
+        if ($loginlastfile -like 'OstatniRDS.txt') {
+            $loginlastfile = 'OstRDSWszystkie.txt'
+        }
+        
+        $loginlastfilefinal = $loginpath+"\" +$loginlastfile
+    
+        $lastDataRow = (Get-Content $loginlastfilefinal)[-1]
+        
+        $ipl = $lastDataRow.split(' ')[0]
+        $check_userAD = Get-ADUser -Identity $ipf | Select-Object -ExpandProperty SurName
+    
+        if ($lastDataRow -like '*<========>*') {
+            $TextBox3.Text = $ipl
+            $ippolacz = $TextBox3.Text
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$lastDataRow")
+
+            $lb1 = "$check_userAD - $ippolacz"
+            lb $lb1
+
+            $TextBox2.AppendText("`r`n")
+        } elseif ($lastDataRow -like '*Komputer:*') {
+            $iplf = $lastDataRow.split(':')[2]
+            $iplff = $iplf.split(' ')[1]
+            $TextBox3.Text = $iplff
+            $ippolacz = $TextBox3.Text
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$lastDataRow")
+
+            $lb1 = "$check_userAD - $ippolacz"
+            lb $lb1
+
+            $TextBox2.AppendText("`r`n")
+        }
+    
+        if ($ippolacz) {
+            $ippolacz2 = $ippolacz.toupper()
+            if ($ippolacz2 -like 'NEG*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz2 -like 'K*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '10.*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '172.*') { 
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -notlike '192.168*') {
+                $ippolacz = '192.168.'+$ippolacz
+            }
+    
+            if (Test-Path 'C:\Program Files\RealVNC\VNC Viewer\vncviewer.exe' -PathType Leaf) {
+                Copy-Item -Path '\\fs01\IT\skrypty\Esku\vncviewer.exe' -Destination 'C:\Program Files\RealVNC\VNC Viewer\vncviewer.exe' | Wait-Process
+            }
+            Start-Process "C:\Program Files\RealVNC\VNC Viewer\vncviewer.exe" $ippolacz
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Jeżeli zainstalowany jest C:\Program Files\RealVNC\VNC Viewer`r`n")
+            $TextBox2.AppendText("To otworzy się połączenie VNC z $ippolacz")
+            $TextBox2.AppendText("`r`n")
+            if ($check_userAD) {
+                $lb2 = "$check_userAD - $ipf"
+                lb $lb2
+            } else {
+                $lb3 = "$ippolacz"
+                lb $lb3
+            }
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Adres IP pusty`r`n")
+            PolePusteIP
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "RDP") {
+        # RDP
+        waif
+        #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
+        $ippolacz = $TextBox3.Text
+        $ipf = $TextBox3.Text
+    
+        $loginpath = "\\fs01\IT\Raporty\Logon\$ippolacz"
+    
+        $loginlastfile = Get-ChildItem $loginpath | Where-Object { [System.IO.Path]::GetFileNameWithoutExtension($_.Name) -notLike "RDTS*" } | Sort-Object LastWriteTime | Select-Object -last 1 | Select-Object -ExpandProperty Name
+        
+        if ($loginlastfile -like 'OstatniRDS.txt') {
+            $loginlastfile = 'OstRDSWszystkie.txt'
+        }
+        
+        $loginlastfilefinal = $loginpath+"\" +$loginlastfile
+    
+        $lastDataRow = (Get-Content $loginlastfilefinal)[-1]
+        
+        $ipl = $lastDataRow.split(' ')[0]
+        $check_userAD = Get-ADUser -Identity $ipf | Select-Object -ExpandProperty SurName
+    
+        if ($lastDataRow -like '*<========>*') {
+            $TextBox3.Text = $ipl
+            $ippolacz = $TextBox3.Text
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$lastDataRow")
+
+            $lb4 = "$check_userAD - $ippolacz"
+            lb $lb4
+
+            $TextBox2.AppendText("`r`n")
+        } elseif ($lastDataRow -like '*Komputer:*') {
+            $iplf = $lastDataRow.split(':')[2]
+            $iplff = $iplf.split(' ')[1]
+            $TextBox3.Text = $iplff
+            $ippolacz = $TextBox3.Text
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$lastDataRow")
+
+            $lb4 = "$check_userAD - $ippolacz"
+            lb $lb4
+
+            $TextBox2.AppendText("`r`n")
+        }
+    
+        if ($ippolacz) {
+            $ippolacz2 = $ippolacz.toupper()
+            if ($ippolacz2 -like 'NEG*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz2 -like 'K*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '10.*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -like '172.*') {
+                $ippolacz = $ippolacz
+            } elseif ($ippolacz -notlike '192.168*') {
+                $ippolacz = '192.168.'+$ippolacz
+            }
+    
+            if (Test-Path 'C:\Program Files\RealVNC\VNC Viewer\vncviewer.exe' -PathType Leaf) {
+                Copy-Item -Path '\\fs01\IT\skrypty\Esku\vncviewer.exe' -Destination 'C:\Program Files\RealVNC\VNC Viewer\vncviewer.exe' | Wait-Process
+            }
+            $rdpf = $ippolacz+":3389"
+            mstsc /admin /v:$rdpf
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Jeżeli zainstalowany jest C:\Program Files\RealVNC\VNC Viewer`r`n")
+            $TextBox2.AppendText("To otworzy się połączenie VNC z $ippolacz")
+            $TextBox2.AppendText("`r`n")
+            if ($check_userAD) {
+                $lb5 = "$check_userAD - $ipf"
+                lb $lb5
+            } else {
+                $lb5 = "$ippolacz"
+                lb $lb5
+            }
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Adres IP pusty`r`n")
+            PolePusteIP
+            $pb.Visibility = "Hidden"
+        }
+        toend      
+    }
+    $Dom2.SelectedIndex = -1
+    toend
+})
+
+# DHCP
+# Switch
+# LibreNMS
+$siec2.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $siec2.SelectedItem
+    if ($a -eq "Na Switchu") {
+        # Switch
+        waif
+        #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
+        $ippolacz = $TextBox5.Text
+        $ippolacz = $ippolacz -replace '[;]',''
+    
+        if ($ippolacz) {
+            Import-Module Posh-SSH
+            New-SSHSession -ComputerName "10.0.0.254" -ConnectionTimeout 200 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l1, (ConvertTo-SecureString -String $l2 -AsPlainText -Force)) -AcceptKey -Force
+
+            #Build open stream for use in cisco devices
+            $session = Get-SSHSession -Index 0
+            $stream = $session.Session.CreateShellStream("dumb", 0, 0, 0, 0, 1000)
+            $stream.Write("show arp | inc $ippolacz`n")
+            Start-Sleep 2
+            $switchf = $stream.Read()
+            Remove-SSHSession -Index 0
+
+            $TextBox2.AppendText("$switchf`r`n")
+
+            $tmp = New-TemporaryFile
+            $tmp.FullName
+            $switchf | Out-File $tmp.FullName
+
+            $Content = Get-content $tmp.FullName | Select-Object -Skip 2 | select-object -SkipLast 1
+            $columns = $Content
+
+            $columns | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Adres IP pusty`r`n")
+            PolePusteIP
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "W DHCP") {
+        # DHCP
+        waif
+        $adreip = $TextBox5.Text
+        $adreip = $adreip -replace '[;]',''
+        if ($adreip) {
+            if (Get-Module -ListAvailable -Name Posh-SSH) {
+                $TextBox2.AppendText("Potrzebne moduły obecne`r`n")
+            } else {
+                $TextBox2.AppendText("Brak moddułów...Instalacja...`r`n")
+                Find-Module Posh-SSH | Install-Module -Confirm:$False -Force
+            }
+            Import-Module Posh-SSH
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            Get-SCPFile -RemoteFile "/usr/local/etc/dhcpd.conf" -LocalFile "C:\WINDOWS\TEMP\dhcpd.csv" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+            
+            $line = Get-Content C:\WINDOWS\TEMP\dhcpd.csv | select-string $adreip | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+    
+            $linef = $line
+            $F = $linef -split "(?<=ethernet)\s" | Select-Object -Skip 1 -First 1
+            $FF = $F -split "(?<=;)\s" | Select-Object -First 1
+            $FFF = $FF -replace '[;]',''
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("MAC: $FFF")
+            $TextBox2.AppendText("`r`n")
+
+            $linef = $line -replace '[:]',''
+            $F = $linef -split "(?<=ethernet)\s" | Select-Object -Skip 1 -First 1
+            $FF = $F -split "(?<=;)\s" | Select-Object -First 1
+            $FFF2 = $FF -replace '[;]',''
+            $FFF2 = $FFF2.Insert(4,".").Insert(9,".")
+
+            $TextBox2.AppendText("MAC: $FFF2")
+            $TextBox2.AppendText("`r`n")
+    
+            Remove-SSHSession -Index 0 -Verbose
+            Remove-Item C:\Windows\temp\$FFF.ini -Force
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Brak Szukanego IP/Mac`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak Szukanego IP/Mac",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
+        toend 
+    } elseif ($a -eq "W LibreNMS") {
+        # W LibreNMS
+        waif
+        $adreip = $TextBox5.Text
+        $adreip = $adreip -replace '[;]',''
+        if ($adreip) {
+            $adreip2 = $adreip.toupper()
+            if ($adreip2 -like 'NEG*') {
+                Start-Process "http://192.168.100.34/search/search=fdb/search/search=fdb/searchby=ip/searchPhrase=$adreip"
+            } elseif ($adreip2 -like '10.*') {
+                Start-Process "http://192.168.100.34/search/search=fdb/search/search=fdb/searchby=ip/searchPhrase=$adreip"
+            } elseif ($adreip2 -like '172.*') { 
+                Start-Process "http://192.168.100.34/search/search=fdb/search/search=fdb/searchby=ip/searchPhrase=$adreip"
+            } elseif ($adreip2 -like '192*') {
+                Start-Process "http://192.168.100.34/search/search=fdb/search/search=fdb/searchby=ip/searchPhrase=$adreip"
+            } else {
+                Start-Process "http://192.168.100.34/search/search=fdb/search/search=fdb/searchby=mac/searchPhrase=$adreip"
+            }
+
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Brak Szukanego IP/Mac`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak Szukanego IP/Mac",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
+        toend 
+    }
+    $siec2.SelectedIndex = -1
+    toend
+})
+
+# VNC
+# RDP
+# WWW
+# Ping
+# Ping - CMD
+$siec3.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $siec3.SelectedItem
     if ($a -eq "MAC Terminala") {
         # MAC/IP
         waif
-        $adreip = $TextBox3.Text
+        $adreip = $TextBox5.Text
         if ($adreip) {
             if (Get-Module -ListAvailable -Name Posh-SSH) {
                 $TextBox2.AppendText("Potrzebne moduły obecne`r`n")
@@ -6795,12 +7783,12 @@ $Dom2.Add_IsMouseCapturedChanged({
             $pb.Visibility = "Hidden"
         }
         toend
-    } elseif ($a -eq "Połącz - VNC") {
+    } elseif ($a -eq "VNC") {
         # Połącz - VNC
         waif
         #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
-        $ippolacz = $TextBox3.Text
-        $ipf = $TextBox3.Text
+        $ippolacz = $TextBox5.Text
+        $ipf = $TextBox5.Text
     
         $loginpath = "\\fs01\IT\Raporty\Logon\$ippolacz"
     
@@ -6818,20 +7806,26 @@ $Dom2.Add_IsMouseCapturedChanged({
         $check_userAD = Get-ADUser -Identity $ipf | Select-Object -ExpandProperty SurName
     
         if ($lastDataRow -like '*<========>*') {
-            $TextBox3.Text = $ipl
-            $ippolacz = $TextBox3.Text
+            $TextBox5.Text = $ipl
+            $ippolacz = $TextBox5.Text
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("$lastDataRow")
-            $ListBox.Items.Add("$check_userAD - $ippolacz")
+
+            $lb1 = "$check_userAD - $ippolacz"
+            lb $lb1
+
             $TextBox2.AppendText("`r`n")
         } elseif ($lastDataRow -like '*Komputer:*') {
             $iplf = $lastDataRow.split(':')[2]
             $iplff = $iplf.split(' ')[1]
-            $TextBox3.Text = $iplff
-            $ippolacz = $TextBox3.Text
+            $TextBox5.Text = $iplff
+            $ippolacz = $TextBox5.Text
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("$lastDataRow")
-            $ListBox.Items.Add("$check_userAD - $ippolacz")
+
+            $lb1 = "$check_userAD - $ippolacz"
+            lb $lb1
+
             $TextBox2.AppendText("`r`n")
         }
     
@@ -6859,9 +7853,11 @@ $Dom2.Add_IsMouseCapturedChanged({
             $TextBox2.AppendText("To otworzy się połączenie VNC z $ippolacz")
             $TextBox2.AppendText("`r`n")
             if ($check_userAD) {
-                $ListBox.Items.Add("$check_userAD - $ipf")
+                $lb2 = "$check_userAD - $ipf"
+                lb $lb2
             } else {
-                $ListBox.Items.Add("$ippolacz")
+                $lb3 = "$ippolacz"
+                lb $lb3
             }
             $pb.Visibility = "Hidden"
         } else {
@@ -6870,12 +7866,12 @@ $Dom2.Add_IsMouseCapturedChanged({
             $pb.Visibility = "Hidden"
         }
         toend
-    } elseif ($a -eq "Połącz - RDP") {
+    } elseif ($a -eq "RDP") {
         # Połącz - RDP
         waif
         #Start-Process "\\fs01\IT\Raporty\Logon\OstatniRaz.vbs"
-        $ippolacz = $TextBox3.Text
-        $ipf = $TextBox3.Text
+        $ippolacz = $TextBox5.Text
+        $ipf = $TextBox5.Text
     
         $loginpath = "\\fs01\IT\Raporty\Logon\$ippolacz"
     
@@ -6893,20 +7889,26 @@ $Dom2.Add_IsMouseCapturedChanged({
         $check_userAD = Get-ADUser -Identity $ipf | Select-Object -ExpandProperty SurName
     
         if ($lastDataRow -like '*<========>*') {
-            $TextBox3.Text = $ipl
-            $ippolacz = $TextBox3.Text
+            $TextBox5.Text = $ipl
+            $ippolacz = $TextBox5.Text
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("$lastDataRow")
-            $ListBox.Items.Add("$check_userAD - $ippolacz")
+
+            $lb4 = "$check_userAD - $ippolacz"
+            lb $lb4
+
             $TextBox2.AppendText("`r`n")
         } elseif ($lastDataRow -like '*Komputer:*') {
             $iplf = $lastDataRow.split(':')[2]
             $iplff = $iplf.split(' ')[1]
-            $TextBox3.Text = $iplff
-            $ippolacz = $TextBox3.Text
+            $TextBox5.Text = $iplff
+            $ippolacz = $TextBox5.Text
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("$lastDataRow")
-            $ListBox.Items.Add("$check_userAD - $ippolacz")
+
+            $lb4 = "$check_userAD - $ippolacz"
+            lb $lb4
+
             $TextBox2.AppendText("`r`n")
         }
     
@@ -6935,9 +7937,11 @@ $Dom2.Add_IsMouseCapturedChanged({
             $TextBox2.AppendText("To otworzy się połączenie VNC z $ippolacz")
             $TextBox2.AppendText("`r`n")
             if ($check_userAD) {
-                $ListBox.Items.Add("$check_userAD - $ipf")
+                $lb5 = "$check_userAD - $ipf"
+                lb $lb5
             } else {
-                $ListBox.Items.Add("$ippolacz")
+                $lb5 = "$ippolacz"
+                lb $lb5
             }
             $pb.Visibility = "Hidden"
         } else {
@@ -6945,11 +7949,25 @@ $Dom2.Add_IsMouseCapturedChanged({
             PolePusteIP
             $pb.Visibility = "Hidden"
         }
-        toend      
+        toend
+    } elseif ($a -eq "WWW") {
+        # WWW
+        waif
+        $www = $TextBox5.Text
+    
+        if ($www) {
+            Start-Process "http://$www"
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Pole puste`r`n")
+            PolePuste
+            $pb.Visibility = "Hidden"
+        }
+        toend
     } elseif ($a -eq "Ping") {
         # Ping
         waif
-        $ping = $TextBox3.Text
+        $ping = $TextBox5.Text
     
         if ($ping) {
             foreach ($name in $names){
@@ -6976,7 +7994,7 @@ $Dom2.Add_IsMouseCapturedChanged({
         toend
     } elseif ($a -eq "Ping - CMD") {
         waif
-        $pingf = $TextBox3.Text
+        $pingf = $TextBox5.Text
         if ($pingf) {
 
             $ippolacz2 = $pingf.toupper()
@@ -7001,7 +8019,373 @@ $Dom2.Add_IsMouseCapturedChanged({
             $pb.Visibility = "Hidden"
         }
     }
-    $Dom2.SelectedIndex = -1
+    $siec3.SelectedIndex = -1
+    toend
+})
+
+# Terminal - MAC
+# Terminal - Drukarki
+# Terminal - Plik Konfiguracyjny
+$siec4.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $siec4.SelectedItem
+    if ($a -eq "MAC") {
+        # MAC/IP
+        waif
+        $adreip = $TextBox5.Text
+        if ($adreip) {
+            if (Get-Module -ListAvailable -Name Posh-SSH) {
+                $TextBox2.AppendText("Potrzebne moduły obecne`r`n")
+            } else {
+                $TextBox2.AppendText("Brak moddułów...Instalacja...`r`n")
+                Find-Module Posh-SSH | Install-Module -Confirm:$False -Force
+            }
+            Import-Module Posh-SSH
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            Get-SCPFile -RemoteFile "/usr/local/etc/dhcpd.conf" -LocalFile "C:\WINDOWS\TEMP\dhcpd.csv" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+            
+            $line = Get-Content C:\WINDOWS\TEMP\dhcpd.csv | select-string $adreip | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+    
+            $linef = $line -replace '[:]',''
+            $F = $linef -split "(?<=ethernet)\s" | Select-Object -Skip 1 -First 1
+            $FF = $F -split "(?<=;)\s" | Select-Object -First 1
+            $FFF = $FF -replace '[;]',''
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("MAC Terminala: $FFF.ini")
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Lokalizacja: /var/ftp/wyse/wnos/inc/$FFF.ini")
+            $TextBox2.AppendText("`r`n")
+    
+            Remove-SSHSession -Index 0 -Verbose
+            Remove-Item C:\Windows\temp\$FFF.ini -Force
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Brak Szukanego IP/Mac`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak Szukanego IP/Mac",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "Drukarki") {
+        # Drukarki
+        waif
+        $adreip = $TextBox5.Text
+        if ($adreip) {
+            if (Get-Module -ListAvailable -Name Posh-SSH) {
+                $TextBox2.AppendText("Potrzebne moduły obecne`r`n")
+            } else {
+                $TextBox2.AppendText("Brak moddułów...Instalacja...`r`n")
+                Find-Module Posh-SSH | Install-Module -Confirm:$False -Force
+            }
+            Import-Module Posh-SSH
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            Get-SCPFile -RemoteFile "/usr/local/etc/dhcpd.conf" -LocalFile "C:\WINDOWS\TEMP\dhcpd.csv" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+            
+            $line = Get-Content C:\WINDOWS\TEMP\dhcpd.csv | select-string $adreip | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+    
+            $linef = $line -replace '[:]',''
+            $F = $linef -split "(?<=ethernet)\s" | Select-Object -Skip 1 -First 1
+            $FF = $F -split "(?<=;)\s" | Select-Object -First 1
+            $FFF = $FF -replace '[;]',''
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("MAC Terminala: $FFF.ini")
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Lokalizacja: /var/ftp/wyse/wnos/inc/$FFF.ini")
+            $TextBox2.AppendText("`r`n")
+            
+            Get-SCPFile -RemoteFile "/var/ftp/wyse/wnos/inc/$FFF.ini" -LocalFile "C:\WINDOWS\TEMP\$FFF.ini" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+    
+            $regex = "\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
+            $sel = (Get-Content C:\WINDOWS\TEMP\$FFF.ini | Select-String -Pattern $regex -AllMatches | % { $_.Matches } | % { $_.Value } | 
+            ForEach-Object {
+                if ($_ -eq "192.168.100.224") {
+                    Start-Process "C:\Program Files (x86)\Notepad++\notepad++.exe" C:\WINDOWS\TEMP\$FFF.ini
+                    $tx = Get-Content C:\WINDOWS\TEMP\$FFF.ini
+                    $TextBox2.AppendText("`r`n")
+                    $TextBox2.AppendText("$tx`r`n")
+                    "Drukarka podłączona przez serwer"
+                    Start-Sleep -s 2
+                } else {
+                    $_
+                }
+            }) -join "`r`n"
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Adresy IP Drukarek:`r`n")
+            $TextBox2.AppendText("$sel`r`n")
+    
+            Remove-SSHSession -Index 0 -Verbose
+            Remove-Item C:\Windows\temp\$FFF.ini -Force
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Brak Szukanego IP/Mac`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak Szukanego IP/Mac",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "Konfiguracyjny") {
+        # Konfiguracyjny
+        waif
+        $adreip = $TextBox5.Text
+        if ($adreip) {
+            if (Get-Module -ListAvailable -Name Posh-SSH) {
+                $TextBox2.AppendText("Potrzebne moduły obecne`r`n")
+            } else {
+                $TextBox2.AppendText("Brak moddułów...Instalacja...`r`n")
+                Find-Module Posh-SSH | Install-Module -Confirm:$False -Force
+            }
+            Import-Module Posh-SSH
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            Get-SCPFile -RemoteFile "/usr/local/etc/dhcpd.conf" -LocalFile "C:\WINDOWS\TEMP\dhcpd.csv" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+            
+            $line = Get-Content C:\WINDOWS\TEMP\dhcpd.csv | select-string $adreip | Out-GridView -PassThru -Title "Przygotował Michał Zbyl"
+    
+            $linef = $line -replace '[:]',''
+            $F = $linef -split "(?<=ethernet)\s" | Select-Object -Skip 1 -First 1
+            $FF = $F -split "(?<=;)\s" | Select-Object -First 1
+            $FFF = $FF -replace '[;]',''
+    
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("MAC Terminala: $FFF.ini")
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Lokalizacja: /var/ftp/wyse/wnos/inc/$FFF.ini")
+            $TextBox2.AppendText("`r`n")
+            
+            Get-SCPFile -RemoteFile "/var/ftp/wyse/wnos/inc/$FFF.ini" -LocalFile "C:\WINDOWS\TEMP\$FFF.ini" -ComputerName 192.168.100.2 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+    
+            Start-Process "C:\Program Files (x86)\Notepad++\notepad++.exe" C:\WINDOWS\TEMP\$FFF.ini
+            Start-Sleep -s 2
+    
+            Remove-SSHSession -Index 0 -Verbose
+            Remove-Item C:\Windows\temp\$FFF.ini -Force
+            Remove-Item C:\Windows\temp\dhcpd.csv -Force
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Brak Szukanego IP/Mac`r`n")
+    
+            $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+            $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak Szukanego IP/Mac",$okOnly)
+            $dialgResult.Text = $result
+            If ($result -eq "Affirmative"){ 
+                $dialgResult.Foreground = "Green"
+            }
+            else{
+                $dialgResult.Foreground = "Red"
+            }
+    
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    }
+    $siec4.SelectedIndex = -1
+    toend
+})
+
+# RTG - skrypt
+# RTG - restart
+# RTG - WWW
+# RTG - VNC
+# RTG - RDP
+$RTG1.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $RTG1.SelectedItem
+    if ($a -eq "Skrypt") {
+        # RTG - skrypt
+        waif
+    
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "Restart") {
+        # RTG - restart
+        waif
+
+        toend
+    } elseif ($a -eq "WWW") {
+        # RTG - WWW
+        waif
+        Start-Process 'http://192.168.39.141'
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "VNC") {
+        # RTG - VNC
+        waif
+        
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "RDP") {
+        # RTG - RDP
+        waif
+
+        $rdpf = "192.168.100.151:3389"
+        mstsc /admin /v:$rdpf
+
+        $pb.Visibility = "Hidden"
+        toend
+    }
+    $RTG1.SelectedIndex = -1
+    toend
+})
+
+# RTG - skrypt
+# RTG - restart
+# RTG - WWW
+# RTG - VNC
+# RTG - RDP
+$RTG2.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $RTG2.SelectedItem
+    if ($a -eq "Skrypt") {
+        # RTG - skrypt
+        waif
+    
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "Restart") {
+        # RTG - restart
+        waif
+
+        toend
+    } elseif ($a -eq "WWW") {
+        # RTG - WWW
+        waif
+        Start-Process 'http://192.168.39.142'
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "VNC") {
+        # RTG - VNC
+        waif
+        
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "RDP") {
+        # RTG - RDP
+        waif
+
+        $rdpf = "192.168.100.152:3389"
+        mstsc /admin /v:$rdpf
+
+        $pb.Visibility = "Hidden"
+        toend
+    }
+    $RTG2.SelectedIndex = -1
+    toend
+})
+
+# RTG - skrypt
+# RTG - restart
+# RTG - WWW
+# RTG - VNC
+# RTG - RDP
+$RTG3.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $RTG3.SelectedItem
+    if ($a -eq "Skrypt") {
+        # RTG - skrypt
+        waif
+    
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "Restart") {
+        # RTG - restart
+        waif
+
+        toend
+    } elseif ($a -eq "WWW") {
+        # RTG - WWW
+        waif
+        Start-Process 'http://192.168.39.143'
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "VNC") {
+        # RTG - VNC
+        waif
+        
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "RDP") {
+        # RTG - RDP
+        waif
+        
+        $rdpf = "192.168.100.153:3389"
+        mstsc /admin /v:$rdpf
+
+        $pb.Visibility = "Hidden"
+        toend
+    }
+    $RTG3.SelectedIndex = -1
+    toend
+})
+
+# RTG - skrypt
+# RTG - restart
+# RTG - WWW
+# RTG - VNC
+# RTG - RDP
+$RTG4.Add_IsMouseCapturedChanged({
+    $TextBox2.AppendText("`r`n")
+    $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+    $a = $RTG4.SelectedItem
+    if ($a -eq "Skrypt") {
+        # RTG - skrypt
+        waif
+    
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "Restart") {
+        # RTG - restart
+        waif
+
+        toend
+    } elseif ($a -eq "WWW") {
+        # RTG - WWW
+        waif
+        Start-Process 'http://192.168.39.144'
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "VNC") {
+        # RTG - VNC
+        waif
+        
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "RDP") {
+        # RTG - RDP
+        waif
+        
+        $rdpf = "192.168.39.144:3389"
+        mstsc /admin /v:$rdpf
+
+        $pb.Visibility = "Hidden"
+        toend
+    }
+    $RTG4.SelectedIndex = -1
     toend
 })
 
@@ -7058,7 +8442,8 @@ Remove-Item C:\bg\czy.ps1 -Force
                 $TextBox2.AppendText("$spr3")
                 $TextBox2.AppendText("`r`n")
                 $TextBox3.Text = $spr3
-                $ListBox.Items.Add("$domesku - $spr3")
+                $lb6 = "$domesku - $spr3"
+                lb $lb6
             }
         } else {
             $TextBox2.AppendText("Brak wyników`r`n")
@@ -7125,7 +8510,12 @@ $Button12.Add_Click({
         $sReturn = $stream.Read()
         #$stream.WriteLine("whoami")
         Start-Sleep -s 2
+        $stream.WriteLine("su")
+        $stream.WriteLine("$p")
+        Start-Sleep -s 2
         $stream.WriteLine("su zimbra")
+        Start-Sleep -s 2
+        $stream.WriteLine($ldapma)
         Start-Sleep -s 2
         #$stream.WriteLine("whoami")
         $stream.WriteLine($ldapra)
@@ -7144,6 +8534,69 @@ $Button12.Add_Click({
         $TextBox2.AppendText("$ldapun")
         $TextBox2.AppendText("`r`n")
         Start-Sleep -s 2
+        $stream.WriteLine($ldapma)
+        $sReturn = $stream.Read()
+        
+        Remove-SSHSession -Index 0 -Verbose
+
+        $session = New-SSHSession -ComputerName 192.168.100.5 -Credential (New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $l, (ConvertTo-SecureString -String $p -AsPlainText -Force)) -AcceptKey -Force
+        
+        $stream = $session.Session.CreateShellStream("PS-SSH", 0, 0, 0, 0, 1000)
+        $user = Invoke-SSHCommand $session -Command "whoami"
+        $SSHusersName = $user.Output | Out-String
+        $SSHusersName = $SSHusersName.Trim()
+        $secpas = ConvertTo-SecureString -String $p -AsPlainText -Force
+        $results = Invoke-SSHStreamExpectSecureAction -ShellStream $stream -Command "sudo su -" -ExpectString "[sudo] password for $($SSHusersName):" -SecureAction $secpas
+        
+        $ldapuu = "*"+$ldapu+"*"
+        $ldap = (Get-ADUser -Filter {SamAccountName -like $ldapuu} | Select-Object -ExpandProperty DistinguishedName)
+        
+        $ldapname = (Get-ADUser -Filter {SamAccountName -like $ldapuu} | Select-Object -ExpandProperty Name)
+        $ldapnamedot = $ldapname.Replace(" ",".").ToLower()
+        
+        $Polish = "ą", "ć", "ę", "ł", "ń", "ó", "ś", "ż", "ź"
+        $English = "a", "c", "e", "l", "n", "o", "s", "z", "z"
+        
+        foreach($litera in $ldapnamedot.toCharArray())
+        {
+            for($i=0; $i -lt 19; $i++)
+            {
+                if($litera.ToString().Equals($Polish[$i]))
+                {
+                    $ldapnamedot=$ldapnamedot.Replace($Polish[$i],$English[$i])
+                }
+            }
+        }
+        Write-Host = $ldapnamedot
+        $ldapnamesplit = $ldapname.Split(" ")
+        $ldapnamei = $ldapnamesplit[0]
+        $ldapnamen = $ldapnamesplit[1]
+        
+        $ldapra = "zmprov ra $ldapu@szpital.gorzow.pl $ldapnamedot@szpital.gorzow.pl"
+        $ldapmaic = "zmprov ca $ldapnamedot@szpital.gorzow.pl 'P@ssw0rd' cn '$ldapnamei $ldapnamen' sn '$ldapnamen' displayName '$ldapnamei $ldapnamen' givenName '$ldapnamei' description '$ldapu'"
+        $ldapma = "zmprov ma $ldapnamedot@szpital.gorzow.pl zimbraAuthLdapExternalDn '$ldap'" 
+        $ldapun = "zmprov ma $ldapnamedot@szpital.gorzow.pl zimbraAccountStatus active"
+        
+        $sReturn = $stream.Read()
+        #$stream.WriteLine("whoami")
+        Start-Sleep -s 2
+        $stream.WriteLine("su")
+        $stream.WriteLine("$p")
+        Start-Sleep -s 2
+        $stream.WriteLine("su zimbra")
+        Start-Sleep -s 2
+        $stream.WriteLine($ldapma)
+        Start-Sleep -s 2
+        #$stream.WriteLine("whoami")
+        $stream.WriteLine($ldapra)
+        Start-Sleep -s 2
+        $stream.WriteLine($ldapmaic)
+        Start-Sleep -s 4
+        $stream.WriteLine($ldapma)
+        Start-Sleep -s 2
+        $stream.WriteLine($ldapun)
+        Start-Sleep -s 2
+        $stream.WriteLine($ldapma)
         $sReturn = $stream.Read()
         
         Remove-SSHSession -Index 0 -Verbose
@@ -7172,6 +8625,9 @@ $Button12.Add_Click({
 # Adres IP - Ostatni
 # Adres IP - Wszystkie
 # Szukaj loginu po p
+# Szukaj Oddziału po p
+# Szukaj Certyfikatu po p
+# Szukaj Domowego po p
 # SID
 $Dom1.Add_IsMouseCapturedChanged({
     $TextBox2.AppendText("`r`n")
@@ -7198,6 +8654,8 @@ $Dom1.Add_IsMouseCapturedChanged({
             #echo $lastDataRow
     
             $lastDataRow = (Get-Content $loginlastfilefinal)[-1]
+
+            $lbip = $lastDataRow.Split(' ')[0]
     
             $TextBox2.AppendText("`r`n")
             $TextBox2.AppendText("$loginlast")
@@ -7206,9 +8664,13 @@ $Dom1.Add_IsMouseCapturedChanged({
             $TextBox2.AppendText("`r`n")
             $check_userAD = Get-ADUser -Identity $loginlast | Select-Object -ExpandProperty SurName
             if ($check_userAD) {
-                $ListBox.Items.Add("$check_userAD - $loginlast")
+                $lb7 = "$check_userAD - $loginlast"
+                $lbl = "$loginlast - $lbip"
+                lb $lb7
+                lb $lbl
             } else {
-                $ListBox.Items.Add("$loginlast")
+                $lb7 = "$loginlast"
+                lb $lb7
             }
             $pb.Visibility = "Hidden"
         } else {
@@ -7242,7 +8704,8 @@ $Dom1.Add_IsMouseCapturedChanged({
             $check_userAD = Get-ADUser -Identity $dom_loginu | Select-Object -ExpandProperty Name
             if ($check_userAD) {
                 $TextBox2.AppendText("$dom_loginu - $check_userAD`r`n")
-                $ListBox.Items.Add("$check_userAD - $dom_loginu")
+                $lb8 = "$check_userAD - $dom_loginu"
+                lb $lb8
             } else {
     
                 $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
@@ -7265,6 +8728,96 @@ $Dom1.Add_IsMouseCapturedChanged({
             $pb.Visibility = "Hidden"
         }
         toend
+    } elseif ($a -eq "Oddziału") {
+        # Szukaj loginu po p
+        waif
+        $dom_loginu = $TextBox3.Text
+        if ($dom_loginu) {
+            $check_userAD = Get-ADUser -Identity $dom_loginu | Select-Object -ExpandProperty DistinguishedName
+            if ($check_userAD) {
+                $odd1 = $check_userAD.split(',')[1]
+                $odd2 = $odd1.Split('=')[1]
+                $TextBox2.AppendText("$dom_loginu - $odd2`r`n")
+                $lb8 = "$odd2 - $dom_loginu"
+                lb $lb8
+            } else {
+                $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak takiego loginu $check_userAD",$okOnly)
+                $dialgResult.Text = $result
+                If ($result -eq "Affirmative"){ 
+                    $dialgResult.Foreground = "Green"
+                }
+                else{
+                    $dialgResult.Foreground = "Red"
+                }
+    
+                $TextBox2.AppendText("Brak takiego loginu $check_userAD")
+                $TextBox2.AppendText("`r`n")
+            }
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Login pusty`r`n")
+            PolePusteL
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "Certyfikatu") {
+        # Szukaj Certyfikatu po p
+        waif
+        $dom_loginu = $TextBox3.Text
+        if ($dom_loginu) {
+            $cerUser = Get-ADUser $dom_loginu -Properties "Certificates"
+            $check_certAD = $cerUser.Certificates | foreach {New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 $_} | Select-Object -ExpandProperty NotAfter
+            if ($cerUser) {
+                $TextBox2.AppendText("$dom_loginu - $check_certAD`r`n")
+
+                $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Certyfikat $dom_loginu wygaśnie: $check_certAD",$okOnly)
+                $dialgResult.Text = $result
+                If ($result -eq "Affirmative"){ 
+                    $dialgResult.Foreground = "Green"
+                }
+                else{
+                    $dialgResult.Foreground = "Red"
+                }
+            }  else {
+                $okOnly = [MahApps.Metro.Controls.Dialogs.MessageDialogStyle]::Affirmative
+                $result = [MahApps.Metro.Controls.Dialogs.DialogManager]::ShowModalMessageExternal($Form,"Uwaga","Brak takiego loginu $check_userAD",$okOnly)
+                $dialgResult.Text = $result
+                If ($result -eq "Affirmative"){ 
+                    $dialgResult.Foreground = "Green"
+                }
+                else{
+                    $dialgResult.Foreground = "Red"
+                }
+    
+                $TextBox2.AppendText("Brak takiego loginu $check_userAD")
+                $TextBox2.AppendText("`r`n")
+            }
+            $pb.Visibility = "Hidden"
+        } else {
+            $TextBox2.AppendText("Login pusty`r`n")
+            PolePusteL
+            $pb.Visibility = "Hidden"
+        }
+        toend
+    } elseif ($a -eq "Domowy") {
+        # Szukaj Domowego po p
+        waif
+        $domowy = $TextBox3.Text
+    
+        if ($domowy) {
+            Invoke-Item "\\fs01\Home$\$domowy"
+        
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("$domowy`r`n")
+            $lb9 = "$domowy"
+            lb $lb9
+        } else {
+            $TextBox2.AppendText("Login puste`r`n")
+            PolePusteL
+        }
+        $pb.Visibility = "Hidden"
     } elseif ($a -eq "SID") {
         waif
     
@@ -7278,24 +8831,9 @@ $Dom1.Add_IsMouseCapturedChanged({
             $check_userAD = Get-ADUser -Identity $SID | Select-Object -ExpandProperty Name
             $TextBox2.AppendText("$check_userAD - $SID`r`n")
             $TextBox2.AppendText("$SIDF`r`n")
-            $ListBox.Items.Add("$SID")
+            $lb9 = "$SID"
+            lb $lb9
             $TextBox3.Text = $SIDF
-        } else {
-            $TextBox2.AppendText("Login puste`r`n")
-            PolePusteL
-        }
-        $pb.Visibility = "Hidden"
-    } elseif ($a -eq "Domowy") {
-        waif
-    
-        $domowy = $TextBox3.Text
-    
-        if ($domowy) {
-            Invoke-Item "\\fs01\Home$\$domowy"
-        
-            $TextBox2.AppendText("`r`n")
-            $TextBox2.AppendText("$domowy`r`n")
-            $ListBox.Items.Add("$domowy")
         } else {
             $TextBox2.AppendText("Login puste`r`n")
             PolePusteL
@@ -7307,6 +8845,7 @@ $Dom1.Add_IsMouseCapturedChanged({
 })
 
 # Domena Raport - Użytkownicy
+# Domena Raport - Login - Ostatni
 # Domena Raport - PC
 # Ostatni PC
 $Rap1.Add_IsMouseCapturedChanged({
@@ -7362,6 +8901,19 @@ AD Audit - Przygotował Michał Zbyl
         }
         
         $TextBox2.AppendText("`r`n")
+        $pb.Visibility = "Hidden"
+        toend
+    } elseif ($a -eq "Login - Ostatni") {
+        waif
+        $los = Get-ADUser -Filter {SamAccountName -like "p01*"} | Select-Object -Last 1 | Select-Object -ExpandProperty SamAccountName
+        $los2 = Get-ADUser -Filter {SamAccountName -like "p02*"} | Select-Object -Last 2 | Select-Object -ExpandProperty SamAccountName
+        $los2f = $los2.split(' ')[0]
+        $lblos = "Ostatni: $los"
+        $lblos2 = "Ostatni: $los2f"
+        lb $lblos
+        $TextBox2.AppendText("`r`n")
+        $TextBox2.AppendText("Ostatni zajęty Login w Domenie przed p02: $los`r`n")
+        $TextBox2.AppendText("Ostatni zajęty Login w Domenie po p02: $los2f`r`n")
         $pb.Visibility = "Hidden"
         toend
     } elseif ($a -eq "PC") {
@@ -7431,6 +8983,8 @@ AD Audit - Przygotował Michał Zbyl
         waif
         $komp = (Get-ADComputer -Filter {Name -Like "K0*"} -Property * | Select-Object -Last 1)
         $kompLast = $komp | Select-Object -ExpandProperty Name
+        $kompll = "Ostatni: $kompLast"
+        lb $kompll
         $TextBox2.AppendText("`r`n")
         $TextBox2.AppendText("Ostatni zajęty PC w Domenie to: $kompLast`r`n")
         $pb.Visibility = "Hidden"
@@ -7468,7 +9022,7 @@ $Button9.Add_Click({
         $connection.close()
 
         if ($table) {        
-            $spr = $table | Select-Object PRAC_IMIE, PRAC_NAZWISKO, PRAC_USERNAME, PRAC_NR_PESEL, PRAC_PASS_CHANGE_DATE
+            $spr = $table | Select-Object PRAC_IMIE, PRAC_NAZWISKO, PRAC_USERNAME, PRAC_NR_PESEL, PRAC_PASS_CHANGE_DATE,'(SELECTMAX(LOGON_DAY)FROMSTATS$USER_LOGWHEREUSER_ID=PRAC_USERNAME)'
 
             if ($GRID1.IsChecked -eq $true) {
                 $spr3 = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | select-Object -ExpandProperty 'PRAC_USERNAME'
@@ -7521,17 +9075,109 @@ Remove-Item C:\bg\czy.ps1 -Force
     }
     toend
  })
-# Blokada-Wypisy
+
+# Ostatnie logowanie po Nazwisku
+$Buttonol.Add_Click({
+    waif
+    $TextBox2.AppendText("Piszemy Polskie znaki. Wielkość liter nie ma znaczenia.`r`n")
+
+    $uesku = $TextBox1.Text
+    $ueskuf = $uesku.substring(0,1).toupper()+$uesku.substring(1).tolower()
+
+    if ($uesku) {
+        $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
+        
+        ## by SID
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+
+        # $query = "Select * FROM RI_PRACOWNICY where PRAC_NAZWISKO LIKE '$ueskuf%'"
+        $query = "Select DISTINCT PRAC_PRACOWNIK_ID,PRAC_IMIE,PRAC_NAZWISKO,PRAC_USERNAME,PRAC_NR_PESEL,PRAC_PASS_CHANGE_DATE,
+        (select max(LOGON_DAY) from STATS`$USER_LOG where USER_ID=PRAC_USERNAME) 
+        FROM RI_PRACOWNICY, STATS`$USER_LOG 
+        where PRAC_NAZWISKO LIKE '$ueskuf%' and USER_ID=PRAC_USERNAME"
+
+        $connection.open()
+
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $wynik = $command.ExecuteReader()
+
+        $table = new-object System.Data.DataTable
+        $table.Load($wynik)
+
+        $connection.close()
+
+        if ($table) {        
+            # $spr = $table | Select-Object PRAC_IMIE, PRAC_NAZWISKO, PRAC_USERNAME, PRAC_NR_PESEL, PRAC_PASS_CHANGE_DATE,'(SELECTMAX(LOGON_DAY)FROMSTATS$USER_LOGWHEREUSER_ID=PRAC_USERNAME)'
+            $spr = $table | Select-Object PRAC_IMIE, PRAC_NAZWISKO, PRAC_USERNAME, PRAC_NR_PESEL, PRAC_PASS_CHANGE_DATE,@{N='Ostatnie Logowanie';E={$_.'(SELECTMAX(LOGON_DAY)FROMSTATS$USER_LOGWHEREUSER_ID=PRAC_USERNAME)'}}
+
+            if ($GRID1.IsChecked -eq $true) {
+                $spr3 = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | select-Object -ExpandProperty 'PRAC_USERNAME'
+            } elseif ($HTML1.IsChecked -eq $true) {
+        
+$Header = @"
+<meta charset="utf-8">
+<style>
+TABLE {border-width: 1px;border-style: solid;border-color: black;border-collapse: collapse;}
+TH {border-width: 1px;padding: 3px;border-style: solid;border-color: black;background-color: #6495ED;}
+TD {border-width: 1px;padding: 3px;border-style: solid;border-color: black;}
+P {font-size:24px; font-weight:bold;}
+.odd  { background-color:#ffffff; }
+.even { background-color:#dddddd; }
+</style>
+<title>
+Eskulap - Użytkownicy - Przygotował Michał Zbyl
+</title>
+"@
+                $spr = $table | Select-Object PRAC_IMIE, PRAC_NAZWISKO, PRAC_USERNAME, PRAC_NR_PESEL, PRAC_PASS_CHANGE_DATE,@{N='Ostatnie Logowanie';E={$_.'(SELECTMAX(LOGON_DAY)FROMSTATS$USER_LOGWHEREUSER_ID=PRAC_USERNAME)'}}
+                $spr | ConvertTo-Html -Head $Header | Out-File C:\bg\User.html | Wait-Process
+                
+                Invoke-Item C:\bg\User.html
+                Start-Sleep 5
+$File = @"
+Start-Sleep -s 2
+Remove-Item C:\bg\User.html -Force
+Remove-Item C:\bg\czy.ps1 -Force
+"@
+                $File | Out-File -FilePath C:\bg\User.ps1 -Encoding ASCII | Wait-Process
+                Invoke-Item (Start-Process powershell "C:\bg\czy.ps1")
+                Remove-Item C:\bg\User.html -Force
+            }
+
+            $TextBox2.AppendText("`r`n")
+            $TextBox2.AppendText("Wynik:`r`n")
+            $TextBox2.AppendText("$uesku")
+            $TextBox2.AppendText("`r`n")
+            if ($spr3) {
+                $TextBox2.AppendText("$spr3")
+                $TextBox2.AppendText("`r`n")
+                $TextBox1.Text = $spr3
+            }
+            $pb.Visibility = "Hidden"
+        }
+    } else {
+        $TextBox2.AppendText("Pole puste`r`n")
+        PolePuste
+        $pb.Visibility = "Hidden"
+    }
+    toend
+ })
+
+# Blokada-Tabele
 $Button8.Add_Click({
     waif
-    $TextBox2.AppendText("Lista użytkowników blokujących wypisy.`r`n")
+    $TextBox2.AppendText("Lista użytkowników blokujących tabele w bazie.`r`n")
     $TextBox2.AppendText("Trwa sprawdzanie. Czekaj...`r`n")
      
     ## by SID
     $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
     $locked_object = '$locked_object'
     $session = '$session'
-    $query = "select '||a.sid||','||a.serial#||' to_kill, a.username, prac_imie, prac_nazwisko,a.machine, a.lockwait,a.osuser, a.program,b.owner,b.object_name,c.locked_mode from v$locked_object c, all_objects b, v$session a, ri_pracownicy where b.object_id = c.object_id and a.sid = c.session_id and a.username = RI_PRACOWNICY.PRAC_USERNAME and object_name='SZ_WYPISY'"
+    $query = "select SID,prac_pracownik_id,JO_NAZWA,SERIAL#,PRAC_IMIE,PRAC_NAZWISKO,ORACLE_USERNAME,OS_USER_NAME,TERMINAL,OBJECT_NAME,MODULE,ACTION,LOCKWAIT,ROW_WAIT_FILE#,ROW_WAIT_BLOCK#,ROW_WAIT_ROW#,LOGON_TIME,BLOCKING_SESSION_STATUS,BLOCKING_SESSION,FINAL_BLOCKING_SESSION_STATUS,FINAL_BLOCKING_SESSION,WAIT_CLASS,WAIT_TIME,SECONDS_IN_WAIT,STATE 
+    from v$locked_object c, all_objects b, v$session a, ri_pracownicy, RI_MM_PRACOWNICY_JEDN_ORG, SZ_JEDNOSTKI_ORGANIZACYJNE
+    where PJO_PRAC_PRACOWNIK_ID=RI_PRACOWNICY.prac_pracownik_id and JO_JEDNOSTKA_ID=RI_MM_PRACOWNICY_JEDN_ORG.PJO_JO_JEDNOSTKA_ID and b.object_id = c.object_id and a.sid = c.session_id and a.username = RI_PRACOWNICY.PRAC_USERNAME"
+    # $query = "select * from v$locked_object c, all_objects b, v$session a, ri_pracownicy where b.object_id = c.object_id and a.sid = c.session_id and a.username = RI_PRACOWNICY.PRAC_USERNAME"
+    # $query = "select '||a.sid||','||a.serial#||' to_kill, a.username, prac_imie, prac_nazwisko,a.machine, a.lockwait,a.osuser, a.program,b.owner,b.object_name,c.locked_mode from v$locked_object c, all_objects b, v$session a, ri_pracownicy where b.object_id = c.object_id and a.sid = c.session_id and a.username = RI_PRACOWNICY.PRAC_USERNAME"
     
     $connection.open()
     
@@ -7543,10 +9189,59 @@ $Button8.Add_Click({
     $table.Load($wynik)
     
     $connection.close()
+
+    $sprsid = $table | Select-Object -ExpandProperty PRAC_PRACOWNIK_ID | Out-GridView
+
+    ## by SID
+    # $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+
+    # $query = "select PJO_JO_JEDNOSTKA_ID from RI_MM_PRACOWNICY_JEDN_ORG where pjo_prac_pracownik_id='1407'"
+    
+    # $connection.open()
+    
+    # $command=$connection.CreateCommand()
+    # $command.CommandText=$query
+    # $wyniksid = $command.ExecuteReader()
+    
+    # $tablesid = new-object System.Data.DataTable
+    # $tablesid.Load($wyniksid)
+    
+    # $connection.close()
         
-    $spr = $table | Select-Object USERNAME, PRAC_IMIE, PRAC_NAZWISKO, MACHINE, LOCKWAIT, OSUSER, PROGRAM, OWNER
+    $spr = $table
     if ($GRID1.IsChecked -eq $true) {
-        $spr | Out-GridView -Title "Przygotował Michał Zbyl"
+        $b8g = $spr | Out-GridView -PassThru -Title "Przygotował Michał Zbyl" | Select-Object SID,SERIAL#
+        $b1 = $b8g | Select-Object -ExpandProperty SID
+        $b2 = $b8g | Select-Object -ExpandProperty SERIAL#
+
+        if ($b8g) {
+            $TextBox2.AppendText("SID: $b1, SESSION: $b2`r`n")
+        }
+
+#         SELECT s.inst_id,
+#        s.sid,
+#        s.serial#,
+#        --s.sql_id,
+#        p.spid,
+#        s.username,
+#        s.program
+# FROM   gv$session s
+#        JOIN gv$process p ON p.addr = s.paddr AND p.inst_id = s.inst_id
+# WHERE  s.type != 'BACKGROUND' and s.sid='580'
+
+        ## by SID
+        $connection = New-Object Oracle.ManagedDataAccess.Client.OracleConnection("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=$ora_server)(PORT=1521)) (CONNECT_DATA=(SID=$ora_sid)));User Id=$ora_user;Password=$ora_pass;")
+
+        $query = "ALTER SYSTEM KILL SESSION '$b1,$b2'"
+        
+        $connection.open()
+        
+        $command=$connection.CreateCommand()
+        $command.CommandText=$query
+        $wynik = $command.ExecuteReader()
+        
+        $connection.close()
+
     } elseif ($HTML1.IsChecked -eq $true) {
 
 $Header = @"
@@ -7560,13 +9255,13 @@ P {font-size:24px; font-weight:bold;}
 .even { background-color:#dddddd; }
 </style>
 <title>
-Eskulap - Użytkownicy blokujący wypisy - Przygotował Michał Zbyl
+Eskulap - Użytkownicy blokujących tabele - Przygotował Michał Zbyl
 </title>
 "@
         $spr = $table | Select-Object USERNAME, PRAC_IMIE, PRAC_NAZWISKO, MACHINE, LOCKWAIT, OSUSER, PROGRAM, OWNER
         $spr | ConvertTo-Html -Head $Header | Out-File C:\bg\lock.html | Wait-Process
         
-        Invoke-Item C:\bg\User.html
+        Invoke-Item C:\bg\lock.html
         Start-Sleep 5
 $File = @"
 Start-Sleep -s 2
@@ -7677,6 +9372,49 @@ $Button4.Add_Click({
     }
     toend
  })
+# Rap - Drukarki
+$RapB1.Add_Click({
+    waif
+    Start-Process 'http://192.168.100.34/devices/type=printer/'
+    $pb.Visibility = "Hidden"
+    toend
+})
+# Rap - Tel
+$RapB2.Add_Click({
+    waif
+    Start-Process 'http://192.168.100.2/tel.html'
+    $pb.Visibility = "Hidden"
+    toend
+})
+# Rap - WIKI
+$RapB3.Add_Click({
+    waif
+    Start-Process 'http://centosost.szpital.local/wiki/index.php/Strona_g%C5%82%C3%B3wna'
+    $pb.Visibility = "Hidden"
+    toend
+})
+# Rap - Dyżury
+$RapB4.Add_Click({
+    waif
+    Start-Process 'http://centek.szpital.local/helpdesk/Dyzur/index.html'
+    $pb.Visibility = "Hidden"
+    toend
+})
+# Rap - OsTicket
+$RapB5.Add_Click({
+    waif
+    Start-Process 'http://centek.szpital.local/helpdesk/Index2.php'
+    $pb.Visibility = "Hidden"
+    toend
+})
+# Gniazdka
+$siecbutton.Add_Click({
+    waif
+    Import-Csv "\\fs01\IT\!DOKUMENTACJA\Siec_inwentaryzacja.csv" | Out-GridView -Title "KAGUI"
+    $pb.Visibility = "Hidden"
+    toend
+})
+
 # Hasło - Domena
 $Button3.Add_Click({
     waif
@@ -7756,7 +9494,8 @@ $ButtonP.Add_Click({
         $ippolacz = $TextBox3.Text
         $TextBox2.AppendText("`r`n")
         $TextBox2.AppendText("$lastDataRow")
-        $ListBox.Items.Add("$check_userAD - $ippolacz")
+        $lb10 = "$check_userAD - $ippolacz"
+        lb $lb10
         $TextBox2.AppendText("`r`n")
     } elseif ($lastDataRow -like '*Komputer:*') {
         $iplf = $lastDataRow.split(':')[2]
@@ -7765,7 +9504,8 @@ $ButtonP.Add_Click({
         $ippolacz = $TextBox3.Text
         $TextBox2.AppendText("`r`n")
         $TextBox2.AppendText("$lastDataRow")
-        $ListBox.Items.Add("$check_userAD - $ippolacz")
+        $lb10 = "$check_userAD - $ippolacz"
+        lb $lb10
         $TextBox2.AppendText("`r`n")
     }
 
@@ -7790,9 +9530,11 @@ $ButtonP.Add_Click({
         $TextBox2.AppendText("To otworzy się połączenie VNC z $ippolacz")
         $TextBox2.AppendText("`r`n")
         if ($check_userAD) {
-            $ListBox.Items.Add("$check_userAD - $ipf")
+            $lb11 = "$check_userAD - $ipf"
+            lb $lb11
         } else {
-            $ListBox.Items.Add("$ippolacz")
+            $lb11 = "$ippolacz"
+            lb $lb11
         }
         $pb.Visibility = "Hidden"
     } else {
